@@ -1,0 +1,129 @@
+/* --- TRANSITIONS & SCROLL TRIGGER PRESETS --- */
+.reveal {
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.reveal.reveal-up {
+  transform: translateY(50px);
+}
+
+.reveal.reveal-left {
+  transform: translateX(-50px);
+}
+
+.reveal.reveal-right {
+  transform: translateX(50px);
+}
+
+.reveal.reveal-zoom {
+  transform: scale(0.9);
+}
+
+/* Activated State via JS */
+.reveal.active {
+  opacity: 1;
+  transform: translate(0) scale(1);
+}
+
+/* Staggered Delay Helpers */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+
+/* --- HERO ANIMATED BACKGROUNDS & FLOATING --- */
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(3deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.floating-icon-wrapper {
+  animation: float 6s ease-in-out infinite;
+}
+
+.floating-icon-wrapper:nth-child(even) {
+  animation-duration: 8s;
+  animation-delay: 1s;
+}
+
+/* --- BUTTON & CARD MICRO-INTERACTIONS --- */
+.hover-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.hover-glow::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(var(--accent-gold-rgb), 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hover-glow:hover::after {
+  opacity: 1;
+}
+
+/* Luxury Brand Slider Animation */
+@keyframes slide-logos {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.logo-track {
+  display: flex;
+  width: max-content;
+  animation: slide-logos 30s linear infinite;
+}
+
+.logo-track:hover {
+  animation-play-state: paused;
+}
+
+/* Image Zoom on hover */
+.img-zoom-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.img-zoom-container img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.img-zoom-container:hover img {
+  transform: scale(1.08);
+}
+
+/* Ripple effect styling */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+  transform: scale(0);
+  animation: ripple-effect 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes ripple-effect {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+@keyframes bell-ring {
+  0%, 100% { transform: rotate(0); }
+  4%, 12%, 20%, 28%, 36% { transform: rotate(12deg); }
+  8%, 16%, 24%, 32%, 40% { transform: rotate(-12deg); }
+  44%, 96% { transform: rotate(0); }
+}

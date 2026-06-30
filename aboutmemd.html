@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About the Founder | Eternal Home & Parah Traders</title>
+  
+  <meta name="description" content="Discover the vision, philosophy, and legacy of Mr. Shabir Parah, Founder and Managing Director of Eternal Home and Parah Traders. Premium building solutions in Kashmir.">
+  
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animations.css">
+  
+  <style>
+    /* Premium Founder Profile Specific Styles */
+    :root {
+      --dark-card-bg: rgba(13, 20, 32, 0.5);
+      --dark-card-border: rgba(184, 144, 40, 0.15);
+      --gold-glow-subtle: 0 8px 32px rgba(184, 144, 40, 0.05);
+    }
+
+    body {
+      background-color: #060910 !important; /* Force true premium dark background */
+      color: #e2e8f0;
+    }
+
+    .founder-hero {
+      padding: 120px 0 80px 0;
+      position: relative;
+    }
+
+    .founder-profile-img {
+      width: 100%;
+      max-height: 480px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 12px;
+      border: 1px solid var(--accent-gold);
+      box-shadow: var(--gold-glow);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .founder-profile-img:hover {
+      transform: translateY(-8px) scale(1.02);
+    }
+
+    .premium-glass-card {
+      background: var(--dark-card-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--dark-card-border);
+      border-radius: 12px;
+      padding: 35px;
+      box-shadow: var(--gold-glow-subtle);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .premium-glass-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .premium-glass-card:hover {
+      border-color: var(--accent-gold);
+      box-shadow: var(--gold-glow);
+      transform: translateY(-5px);
+    }
+
+    .premium-glass-card:hover::before {
+      opacity: 1;
+    }
+
+    .luxury-icon-box {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: rgba(184, 144, 40, 0.1);
+      border: 1px solid var(--accent-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--accent-gold);
+      margin-bottom: 25px;
+    }
+
+    .journey-timeline {
+      position: relative;
+      border-left: 2px solid rgba(184, 144, 40, 0.2);
+      padding-left: 30px;
+    }
+
+    .journey-timeline-item {
+      position: relative;
+      margin-bottom: 40px;
+    }
+
+    .journey-timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -41px;
+      top: 6px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #060910;
+      border: 2px solid var(--accent-gold);
+      box-shadow: var(--gold-glow);
+    }
+
+    .counter-number {
+      font-family: var(--font-heading);
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      line-height: 1;
+      margin-bottom: 5px;
+      text-shadow: var(--gold-glow);
+    }
+
+    .counter-label {
+      font-family: var(--font-subheading);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+
+    .quote-box {
+      border-left: 3px solid var(--accent-gold);
+      padding-left: 20px;
+      font-style: italic;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Scroll Progress -->
+  <div id="scroll-progress"></div>
+
+  <!-- Loading Preloader -->
+  <div id="loading-screen">
+    <div class="loader-logo">ETERNAL<span>HOME</span></div>
+    <div class="loader-bar">
+      <div class="loader-progress"></div>
+    </div>
+  </div>
+
+  <!-- Top Navigation Header -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="images/logo/logo.svg" alt="Eternal Home Logo" style="height: 40px; width: 40px; object-fit: contain;">
+        ETERNAL<span>HOME</span>
+      </a>
+      
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link" id="nav-home">Home</a></li>
+          <li><a href="about.html" class="nav-link active" id="nav-about">About</a></li>
+          <li><a href="services.html" class="nav-link" id="nav-services">Services</a></li>
+          <li><a href="products.html" class="nav-link" id="nav-collections">Collections</a></li>
+          <li><a href="gallery.html" class="nav-link" id="nav-gallery">Gallery</a></li>
+          <li><a href="brands.html" class="nav-link" id="nav-brands">Brands</a></li>
+          <li><a href="contact.html" class="nav-link" id="nav-contact">Contact</a></li>
+        </ul>
+      </nav>
+      
+      <div class="nav-icons">
+        <a href="products.html" class="icon-btn clickable" title="Search"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <a href="wishlist.html" class="icon-btn clickable" title="Wishlist">
+          <i class="fa-regular fa-heart"></i>
+          <span class="icon-badge wishlist-badge" style="display: none;">0</span>
+        </a>
+        <a href="cart.html" class="icon-btn clickable" title="Cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="icon-badge cart-badge" style="display: none;">0</span>
+        </a>
+        
+        <button class="theme-toggle-btn icon-btn clickable" title="Toggle Theme">
+          <i class="fa-solid fa-moon"></i>
+          <i class="fa-solid fa-sun"></i>
+        </button>
+        
+        <button class="hamburger clickable" aria-label="Toggle Navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Founder Main Section -->
+  <section class="founder-hero">
+    <div class="container">
+      
+      <!-- Breadcrumbs -->
+      <ul class="breadcrumbs mb-5" style="margin-bottom: 50px;">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li class="active">Founder & MD</li>
+      </ul>
+
+      <div class="row g-5 align-items-center">
+        <!-- Left Column: Portrait -->
+        <div class="col-md-4 reveal reveal-left">
+          <div class="position-relative" style="max-width: 320px; margin: 0 auto;">
+            <img src="images/parahitself/parahimg.png" alt="Mr. Shabir Parah - Founder & Managing Director" class="founder-profile-img">
+            <div class="glass-panel text-center py-3 px-4 rounded border mt-4" style="background: rgba(13, 20, 32, 0.7); border-color: var(--accent-gold) !important; box-shadow: var(--gold-glow);">
+              <h3 class="font-heading text-primary m-0" style="font-size: 1.2rem; font-weight: 700; color: #fff !important;">Mr. Shabir Parah</h3>
+              <p class="text-gold font-subheading m-0 mt-1" style="font-size: 0.7rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;">Founder & MD</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Introduction -->
+        <div class="col-md-8 reveal reveal-right delay-1" style="padding-left: 30px;">
+          <div class="section-subtitle text-left m-0" style="text-align: left;">Meet the Founder</div>
+          <h1 class="section-title text-left mt-2 mb-4" style="text-align: left; font-size: 2.2rem; line-height: 1.25;">The Vision Behind<br><span>Eternal Home & Parah Traders</span></h1>
+          
+          <p class="text-secondary mb-4" style="font-size: 1.05rem; line-height: 1.8;">
+            At the intersection of enduring craftsmanship and contemporary living stands Shabir Parah, a visionary entrepreneur who has spent years establishing a benchmark for architectural excellence in Kashmir. As the Founder and Managing Director of Parah Traders and Eternal Home, Mr. Shabir Parah has spearheaded a paradigm shift in how spaces are designed, curated, and experienced.
+          </p>
+          <p class="text-secondary mb-4" style="font-size: 1.05rem; line-height: 1.8;">
+            His ambition extends far beyond the distribution of premium building materials, luxury bathware, vitrified tiles, and sanitaryware. He is committed to helping families design beautiful, resilient, and structurally sound homes that stand as a legacy for generations to come, combining structural longevity with modern global designs.
+          </p>
+
+          <div class="quote-box mt-4 text-secondary">
+            "Luxury is not about excess; it is about selecting materials that bring harmony, durability, and character to the spaces we inhabit."
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Stats Counters Row -->
+  <section class="py-5" style="background-color: #090e18; border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);">
+    <div class="container">
+      <div class="row text-center g-4">
+        <div class="col-md-3 col-6 reveal reveal-up">
+          <div class="counter-number counter-val" data-target="10" data-suffix="K+">0K+</div>
+          <div class="counter-label">Satisfied Customers</div>
+        </div>
+        <div class="col-md-3 col-6 reveal reveal-up delay-1">
+          <div class="counter-number counter-val" data-target="5000" data-suffix="+">0+</div>
+          <div class="counter-label">Premium Products</div>
+        </div>
+        <div class="col-md-3 col-6 reveal reveal-up delay-2">
+          <div class="counter-number counter-val" data-target="70" data-suffix="+">0+</div>
+          <div class="counter-label">Trusted Brands</div>
+        </div>
+        <div class="col-md-3 col-6 reveal reveal-up delay-3">
+          <div class="counter-number counter-val" data-target="100" data-suffix="%">0%</div>
+          <div class="counter-label">Customer Commitment</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Corporate Content Sections -->
+  <section class="py-5">
+    <div class="container py-4">
+      <div class="row g-5">
+        
+        <!-- Left Side: Philosophy & Journey -->
+        <div class="col-lg-7 reveal reveal-left">
+          
+          <!-- Philosophy Section -->
+          <div class="mb-5">
+            <h2 class="font-heading mb-4" style="font-size: 1.8rem; color: #fff;"><i class="fa-solid fa-compass text-gold mr-2" style="margin-right:10px;"></i> Our Philosophy</h2>
+            
+            <div class="row g-4">
+              <div class="col-md-6">
+                <h4 class="text-gold font-heading" style="font-size: 1.05rem;"><i class="fa-solid fa-circle-check mr-2" style="margin-right:6px;"></i> Quality Before Quantity</h4>
+                <p class="text-secondary" style="font-size: 0.85rem; line-height: 1.6;">We refuse to compromise on structural integrity, sourcing only materials that meet rigorous wear-resistance and aesthetic benchmarks.</p>
+              </div>
+              <div class="col-md-6">
+                <h4 class="text-gold font-heading" style="font-size: 1.05rem;"><i class="fa-solid fa-circle-check mr-2" style="margin-right:6px;"></i> Honest Business Practices</h4>
+                <p class="text-secondary" style="font-size: 0.85rem; line-height: 1.6;">Trust is our primary currency. We deal transparently in all pricing, material grades, and supply chain logistics.</p>
+              </div>
+              <div class="col-md-6">
+                <h4 class="text-gold font-heading" style="font-size: 1.05rem;"><i class="fa-solid fa-circle-check mr-2" style="margin-right:6px;"></i> Customer Satisfaction</h4>
+                <p class="text-secondary" style="font-size: 0.85rem; line-height: 1.6;">Every showroom visitor is guided through a personalized consultation, ensuring their unique structural requirements are fully satisfied.</p>
+              </div>
+              <div class="col-md-6">
+                <h4 class="text-gold font-heading" style="font-size: 1.05rem;"><i class="fa-solid fa-circle-check mr-2" style="margin-right:6px;"></i> Long-Term Relationships</h4>
+                <p class="text-secondary" style="font-size: 0.85rem; line-height: 1.6;">Our service does not end at delivery. We support our patrons through installation guidance and post-purchase consulting.</p>
+              </div>
+              <div class="col-md-6">
+                <h4 class="text-gold font-heading" style="font-size: 1.05rem;"><i class="fa-solid fa-circle-check mr-2" style="margin-right:6px;"></i> Modern Innovation</h4>
+                <p class="text-secondary" style="font-size: 0.85rem; line-height: 1.6;">From smart touchless sanitaryware to large-format porcelain slabs, we bring the latest global trends to Ganderbal.</p>
+              </div>
+              <div class="col-md-6">
+                <h4 class="text-gold font-heading" style="font-size: 1.05rem;"><i class="fa-solid fa-circle-check mr-2" style="margin-right:6px;"></i> Carefully Selected Brands</h4>
+                <p class="text-secondary" style="font-size: 0.85rem; line-height: 1.6;">We select partners who share our commitment to longevity and style, curating collections from industry leaders.</p>
+              </div>
+              <div class="col-md-12">
+                <h4 class="text-gold font-heading" style="font-size: 1.05rem;"><i class="fa-solid fa-circle-check mr-2" style="margin-right:6px;"></i> Affordable Luxury</h4>
+                <p class="text-secondary" style="font-size: 0.85rem; line-height: 1.6;">We prove that international-quality design can be accessible, offering direct pricing value to our consumers without middleman markups.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Journey Section -->
+          <div>
+            <h2 class="font-heading mb-4" style="font-size: 1.8rem; color: #fff;"><i class="fa-solid fa-route text-gold mr-2" style="margin-right:10px;"></i> The Journey</h2>
+            <div class="journey-timeline">
+              <div class="journey-timeline-item">
+                <h4 class="text-gold font-heading" style="font-size: 1.1rem; margin-bottom: 8px;">The Founding Vision</h4>
+                <p class="text-secondary" style="font-size: 0.9rem; line-height: 1.7;">
+                  The story of Parah Traders and Eternal Home is rooted in a simple observation: the local market deserved access to international-standard architectural finishes without the friction of distant sourcing. Recognizing this gap, Mr. Shabir Parah established Parah Traders, aiming to supply premium building solutions directly to builders and homeowners in Kashmir.
+                </p>
+              </div>
+              <div class="journey-timeline-item">
+                <h4 class="text-gold font-heading" style="font-size: 1.1rem; margin-bottom: 8px;">Establishing the Showroom</h4>
+                <p class="text-secondary" style="font-size: 0.9rem; line-height: 1.7;">
+                  As the enterprise expanded, the vision evolved into Eternal Home—a dedicated, boutique luxury showroom in Ganderbal. Today, the showroom stands as a landmark of design in Qadri Complex near Beehama, housing a premium collection of bathware, tiles, and fittings under one roof, guided by absolute transparency, trust, and premium service.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Side: Message, Vision & Mission -->
+        <div class="col-lg-5 reveal reveal-right delay-1">
+          
+          <!-- Leadership Message -->
+          <div class="premium-glass-card mb-5">
+            <div class="luxury-icon-box"><i class="fa-solid fa-quote-left"></i></div>
+            <h3 class="font-heading text-primary mb-3" style="font-size: 1.3rem; font-weight: 700; color: #fff !important;">Leadership Message</h3>
+            <p class="text-secondary" style="font-size: 0.95rem; line-height: 1.8; font-style: italic;">
+              "A home is the most personal sanctuary a family will build. It is the repository of their memories and a reflection of their values. Because of this, we believe every space deserves materials of unquestionable quality. Our objective has never been about volume; it has always been about offering products that we would proudly install in our own homes, backed by honest guidance and a relationship that outlasts the sale."
+            </p>
+            <p class="text-gold font-subheading m-0 mt-4 text-right" style="font-size: 0.8rem; font-weight: 600; text-align: right;">— Mr. Shabir Parah</p>
+          </div>
+
+          <!-- Vision & Mission -->
+          <div class="premium-glass-card mb-5">
+            <h3 class="font-heading text-primary mb-3" style="font-size: 1.3rem; font-weight: 700; color: #fff !important;"><i class="fa-solid fa-eye text-gold mr-2" style="margin-right:8px;"></i> Vision Statement</h3>
+            <p class="text-secondary" style="font-size: 0.95rem; line-height: 1.7;">
+              To establish Eternal Home and Parah Traders as Kashmir's premier destination for high-end architecture finishes by consistently curating world-class collections, maintaining absolute transparency, and setting new benchmarks in customer relationship management.
+            </p>
+          </div>
+
+          <div class="premium-glass-card">
+            <h3 class="font-heading text-primary mb-3" style="font-size: 1.3rem; font-weight: 700; color: #fff !important;"><i class="fa-solid fa-bullseye text-gold mr-2" style="margin-right:8px;"></i> Mission Statement</h3>
+            <p class="text-secondary" style="font-size: 0.95rem; line-height: 1.7;">
+              To empower homeowners and builders with access to premium, durable tiles and sanitaryware through personalized consultations, direct wholesale pricing value, and an unwavering commitment to post-purchase support.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Promise Section -->
+  <section class="py-5" style="background-color: #070b13;">
+    <div class="container py-4">
+      <div class="text-center mb-5 reveal reveal-up">
+        <div class="section-subtitle">Our Commitments</div>
+        <h2 class="section-title">Our <span>Promise</span></h2>
+      </div>
+
+      <div class="row g-4">
+        <!-- Card 1 -->
+        <div class="col-md-4 reveal reveal-up">
+          <div class="premium-glass-card h-100">
+            <div class="luxury-icon-box"><i class="fa-solid fa-gem"></i></div>
+            <h4 class="font-heading text-primary mb-2" style="font-size: 1.15rem; color: #fff !important;">Premium Quality</h4>
+            <p class="text-secondary m-0" style="font-size: 0.85rem; line-height: 1.6;">We source only high-grade materials, ensuring that every tile, faucet, and fixture performs flawlessly for decades.</p>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="col-md-4 reveal reveal-up delay-1">
+          <div class="premium-glass-card h-100">
+            <div class="luxury-icon-box"><i class="fa-solid fa-user-tie"></i></div>
+            <h4 class="font-heading text-primary mb-2" style="font-size: 1.15rem; color: #fff !important;">Customer First</h4>
+            <p class="text-secondary m-0" style="font-size: 0.85rem; line-height: 1.6;">Your needs dictate our search. We prioritize your specific design goals and material standards above all else.</p>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="col-md-4 reveal reveal-up delay-2">
+          <div class="premium-glass-card h-100">
+            <div class="luxury-icon-box"><i class="fa-solid fa-award"></i></div>
+            <h4 class="font-heading text-primary mb-2" style="font-size: 1.15rem; color: #fff !important;">Trusted Brands</h4>
+            <p class="text-secondary m-0" style="font-size: 0.85rem; line-height: 1.6;">We partner exclusively with verified domestic and global manufacturers, guaranteeing authentic products and warranties.</p>
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="col-md-4 reveal reveal-up">
+          <div class="premium-glass-card h-100">
+            <div class="luxury-icon-box"><i class="fa-solid fa-microchip"></i></div>
+            <h4 class="font-heading text-primary mb-2" style="font-size: 1.15rem; color: #fff !important;">Innovation</h4>
+            <p class="text-secondary m-0" style="font-size: 0.85rem; line-height: 1.6;">We continuously update our showcase to feature smart home automation, touchless systems, and water-efficient fixtures.</p>
+          </div>
+        </div>
+        <!-- Card 5 -->
+        <div class="col-md-4 reveal reveal-up delay-1">
+          <div class="premium-glass-card h-100">
+            <div class="luxury-icon-box"><i class="fa-solid fa-truck-ramp-box"></i></div>
+            <h4 class="font-heading text-primary mb-2" style="font-size: 1.15rem; color: #fff !important;">Reliable Service</h4>
+            <p class="text-secondary m-0" style="font-size: 0.85rem; line-height: 1.6;">From detailed specifications worksheets to prompt logistical support, we ensure your building journey is smooth.</p>
+          </div>
+        </div>
+        <!-- Card 6 -->
+        <div class="col-md-4 reveal reveal-up delay-2">
+          <div class="premium-glass-card h-100">
+            <div class="luxury-icon-box"><i class="fa-solid fa-people-arrows"></i></div>
+            <h4 class="font-heading text-primary mb-2" style="font-size: 1.15rem; color: #fff !important;">Long-Term Relationships</h4>
+            <p class="text-secondary m-0" style="font-size: 0.85rem; line-height: 1.6;">We view our clients as partners in design, offering support and advice long after your purchase is completed.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section class="py-5">
+    <div class="container py-4">
+      <div class="text-center mb-5 reveal reveal-up">
+        <div class="section-subtitle">Showroom Advantages</div>
+        <h2 class="section-title">Why Customers <span>Choose Us</span></h2>
+      </div>
+
+      <div class="row g-4">
+        <!-- Feature 1 -->
+        <div class="col-lg-3 col-sm-6 reveal reveal-up">
+          <div class="premium-glass-card h-100" style="padding: 25px;">
+            <div class="text-gold mb-3" style="font-size: 1.6rem;"><i class="fa-solid fa-hand-holding-heart"></i></div>
+            <h4 class="font-heading text-primary mb-2" style="font-size: 1.05rem; color: #fff !important;">Carefully Selected Products</h4>
+            <p class="text-secondary m-0" style="font-size: 0.8rem; line-height: 1.6;">Every tile texture and shower model is vetted to meet our aesthetic and durability standards.</p>
+          </div>
+        </div>
+        <!-- Feature 2 -->
+        <div class="col-lg-3 col-sm-6 reveal reveal-up delay-1">
+          <div class="premium-glass-card h-100" style="padding: 25px;">
+            <div class="text-gold mb-3" style="font-size: 1.6rem;"><i class="fa-solid fa-cubes"></i></div>
+            <h4 class="font-heading text-primary mb-2" style="font-size: 1.05rem; color: #fff !important;">Modern Designs</h4>
+            <p class="text-secondary m-0" style="font-size: 0.8rem; line-height: 1.6;">We stay ahead of trends, offering slab sizes, gold-trim fixtures, and minimalist matte-black selections.</p>
+          </div>
+        </div>
+        <!-- Feature 3 -->
+        <div class="col-lg-3 col-sm-6 reveal reveal-up delay-2">
+          <div class="premium-glass-card h-100" style="padding: 25px;">
+            <div class="text-gold mb-3" style="font-size: 1.6rem;"><i class="fa-solid fa-compass-drafting"></i></div>
+            <h4 class="font-heading text-primary mb-2" style="font-size: 1.05rem; color: #fff !important;">Expert Guidance</h4>
+            <p class="text-secondary m-0" style="font-size: 0.8rem; line-height: 1.6;">Our team helps calculate exact quantities, coordinates size selections, and maps design concepts.</p>
+          </div>
+        </div>
+        <!-- Feature 4 -->
+        <div class="col-lg-3 col-sm-6 reveal reveal-up delay-3">
+          <div class="premium-glass-card h-100" style="padding: 25px;">
+            <div class="text-gold mb-3" style="font-size: 1.6rem;"><i class="fa-solid fa-tags"></i></div>
+            <h4 class="font-heading text-primary mb-2" style="font-size: 1.05rem; color: #fff !important;">Competitive Pricing</h4>
+            <p class="text-secondary m-0" style="font-size: 0.8rem; line-height: 1.6;">By optimizing supplier relations, we deliver luxury collections at wholesale-to-consumer value rates.</p>
+          </div>
+        </div>
+        <!-- Feature 5 -->
+        <div class="col-lg-3 col-sm-6 reveal reveal-up">
+          <div class="premium-glass-card h-100" style="padding: 25px;">
+            <div class="text-gold mb-3" style="font-size: 1.6rem;"><i class="fa-solid fa-house-chimney-window"></i></div>
+            <h4 class="font-heading text-primary mb-2" style="font-size: 1.05rem; color: #fff !important;">Complete Home Solutions</h4>
+            <p class="text-secondary m-0" style="font-size: 0.8rem; line-height: 1.6;">From foundation-grade adhesives to luxury bathroom fittings, we cover all finishing stages.</p>
+          </div>
+        </div>
+        <!-- Feature 6 -->
+        <div class="col-lg-3 col-sm-6 reveal reveal-up delay-1">
+          <div class="premium-glass-card h-100" style="padding: 25px;">
+            <div class="text-gold mb-3" style="font-size: 1.6rem;"><i class="fa-solid fa-headset"></i></div>
+            <h4 class="font-heading text-primary mb-2" style="font-size: 1.05rem; color: #fff !important;">Trusted Customer Support</h4>
+            <p class="text-secondary m-0" style="font-size: 0.8rem; line-height: 1.6;">We resolve questions promptly, ensuring technical challenges are solved by specialists.</p>
+          </div>
+        </div>
+        <!-- Feature 7 -->
+        <div class="col-lg-3 col-sm-6 reveal reveal-up delay-2">
+          <div class="premium-glass-card h-100" style="padding: 25px;">
+            <div class="text-gold mb-3" style="font-size: 1.6rem;"><i class="fa-solid fa-shield-halved"></i></div>
+            <h4 class="font-heading text-primary mb-2" style="font-size: 1.05rem; color: #fff !important;">Quality Assurance</h4>
+            <p class="text-secondary m-0" style="font-size: 0.8rem; line-height: 1.6;">Every batch of material goes through rigorous inspection before leaving the showroom.</p>
+          </div>
+        </div>
+        <!-- Feature 8 -->
+        <div class="col-lg-3 col-sm-6 reveal reveal-up delay-3">
+          <div class="premium-glass-card h-100" style="padding: 25px;">
+            <div class="text-gold mb-3" style="font-size: 1.6rem;"><i class="fa-solid fa-clock"></i></div>
+            <h4 class="font-heading text-primary mb-2" style="font-size: 1.05rem; color: #fff !important;">Timely Assistance</h4>
+            <p class="text-secondary m-0" style="font-size: 0.8rem; line-height: 1.6;">We respect timelines, aligning our logistics to deliver products when your crew needs them.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Business Values Section -->
+  <section class="py-5" style="background-color: #070b13;">
+    <div class="container py-4">
+      <div class="text-center mb-5 reveal reveal-up">
+        <div class="section-subtitle">Core Pillars</div>
+        <h2 class="section-title">Our Business <span>Values</span></h2>
+      </div>
+
+      <div class="row g-4">
+        <!-- Value 1 -->
+        <div class="col-lg-2 col-md-4 col-sm-6 reveal reveal-up">
+          <div class="premium-glass-card h-100 text-center" style="padding: 25px 15px;">
+            <div class="text-gold mb-3" style="font-size: 1.8rem;"><i class="fa-solid fa-scale-balanced"></i></div>
+            <h4 class="font-heading text-primary mb-2" style="font-size: 1.1rem; color: #fff !important;">Integrity</h4>
+            <p class="text-secondary m-0" style="font-size: 0.75rem; line-height: 1.6;">We operate on the belief that truthfulness in specifications and pricing builds unbreakable bonds.</p>
+          </div>
+        </div>
+        <!-- Value 2 -->
+        <div class="col-lg-2 col-md-4 col-sm-6 reveal reveal-up delay-1">
+          <div class="premium-glass-card h-100 text-center" style="padding: 25px 15px;">
+            <div class="text-gold mb-3" style="font-size: 1.8rem;"><i class="fa-solid fa-medal"></i></div>
+            <h4 class="font-heading text-primary mb-2" style="font-size: 1.1rem; color: #fff !important;">Excellence</h4>
+            <p class="text-secondary m-0" style="font-size: 0.75rem; line-height: 1.6;">In every product and consultation, we strive for a standard that exceeds conventional expectations.</p>
+          </div>
+        </div>
+        <!-- Value 3 -->
+        <div class="col-lg-4 col-md-8 reveal reveal-up delay-2">
+          <div class="premium-glass-card h-100 text-center" style="padding: 25px 25px;">
+            <div class="text-gold mb-3" style="font-size: 1.8rem;"><i class="fa-solid fa-lightbulb"></i></div>
+            <h4 class="font-heading text-primary mb-2" style="font-size: 1.1rem; color: #fff !important;">Innovation</h4>
+            <p class="text-secondary m-0" style="font-size: 0.75rem; line-height: 1.6;">Embracing change allows us to provide materials that are not only aesthetically current but environmentally sustainable, water-efficient, and technologically smart.</p>
+          </div>
+        </div>
+        <!-- Value 4 -->
+        <div class="col-lg-2 col-md-4 col-sm-6 reveal reveal-up">
+          <div class="premium-glass-card h-100 text-center" style="padding: 25px 15px;">
+            <div class="text-gold mb-3" style="font-size: 1.8rem;"><i class="fa-solid fa-eye"></i></div>
+            <h4 class="font-heading text-primary mb-2" style="font-size: 1.1rem; color: #fff !important;">Transparency</h4>
+            <p class="text-secondary m-0" style="font-size: 0.75rem; line-height: 1.6;">From product origin to exact pricing, we keep clients informed, removing all ambiguity.</p>
+          </div>
+        </div>
+        <!-- Value 5 -->
+        <div class="col-lg-2 col-md-4 col-sm-6 reveal reveal-up delay-1">
+          <div class="premium-glass-card h-100 text-center" style="padding: 25px 15px;">
+            <div class="text-gold mb-3" style="font-size: 1.8rem;"><i class="fa-solid fa-heart-circle-check"></i></div>
+            <h4 class="font-heading text-primary mb-2" style="font-size: 1.1rem; color: #fff !important;">Commitment</h4>
+            <p class="text-secondary m-0" style="font-size: 0.75rem; line-height: 1.6;">We dedicate ourselves to the successful completion of your dream projects, offering support.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Floating Actions (WhatsApp & Back to Top) -->
+  <div class="floating-actions">
+    <a href="https://wa.me/917780877456?text=Hi%20Eternal%20Home%2C%20I%20am%20interested%20in%20your%20luxury%20products." 
+       target="_blank" class="float-btn whatsapp-float clickable" id="whatsapp-float" title="Contact on WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <button class="float-btn back-to-top clickable" id="back-to-top" title="Back to Top">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-desc-col">
+          <h3>ETERNAL<span>HOME</span></h3>
+          <p class="footer-desc">
+            Eternal Home is Ganderbal's premium luxury showroom. We curate international-standard tiles, designer bathware, modern sanitaryware, and faucets, providing modern architectural styling to elevate your residential and commercial interiors.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="social-link clickable" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-link clickable" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-link clickable" title="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="#" class="social-link clickable" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul class="footer-links">
+            <li><a href="products.html?category=tiles" class="clickable">Premium Floor Tiles</a></li>
+            <li><a href="products.html?category=tiles" class="clickable">Wall & Designer Tiles</a></li>
+            <li><a href="products.html?category=sanitaryware" class="clickable">Luxury Sanitaryware</a></li>
+            <li><a href="products.html?category=faucets" class="clickable">Designer Faucets</a></li>
+            <li><a href="products.html?category=showers" class="clickable">Rain Shower Systems</a></li>
+            <li><a href="products.html?category=kitchen-sinks" class="clickable">Kitchen Sinks</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="about.html" class="clickable">Our Story</a></li>
+            <li><a href="services.html" class="clickable">Showroom Services</a></li>
+            <li><a href="gallery.html" class="clickable">Inspiration Gallery</a></li>
+            <li><a href="brands.html" class="clickable">Partner Brands</a></li>
+            <li><a href="contact.html" class="clickable">Store Location</a></li>
+            <li><a href="wishlist.html" class="clickable">My Wishlist</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Showroom Info</h4>
+          <ul class="footer-contact">
+            <li>
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Qadri Complex, Near PNB,<br>Beehama, Ganderbal, J&K - 191201</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-phone"></i>
+              <span>+91 7780877456</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-envelope"></i>
+              <span>mail.parahtraders@gmail.com</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-clock"></i>
+              <span>Mon - Sat: 9:30 AM - 7:30 PM<br>Sunday: Closed</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 Eternal Home Tiles & Bathware. All Rights Reserved. Designed for Luxury.</p>
+        <ul class="footer-bottom-links">
+          <li><a href="#" class="clickable">Privacy Policy</a></li>
+          <li><a href="#" class="clickable">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Universal Product Details Modal Popup -->
+  <div id="product-modal" class="modal-overlay">
+    <div class="modal-container glass-panel">
+      <button class="close-modal modal-close-btn clickable"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-grid">
+        <div class="modal-gallery-col">
+          <div class="modal-img-container border rounded">
+            <img src="" alt="" class="modal-main-img w-100 h-100" style="object-fit: cover;">
+          </div>
+        </div>
+        <div class="modal-info-col d-flex flex-column">
+          <div class="mb-3">
+            <span class="modal-brand text-gold font-subheading" style="font-size:0.8rem; font-weight:600; letter-spacing:2px; text-transform:uppercase;"></span>
+            <h2 class="modal-title font-heading mt-1" style="font-size:1.8rem; line-height:1.3; font-weight:700;"></h2>
+          </div>
+          <div class="d-flex align-items-center gap-3 mb-4">
+            <span class="modal-stock-badge px-3 py-1 rounded" style="font-size:0.75rem; font-weight:600;"></span>
+            <div class="d-flex align-items-center text-gold gap-1" style="font-size:0.85rem;">
+              <i class="fa-solid fa-star"></i>
+              <span class="modal-rating-val text-primary font-weight-600"></span>
+              <span class="modal-reviews text-muted" style="margin-left: 2px;"></span>
+            </div>
+          </div>
+          <div class="modal-price-container mb-4">
+            <span class="modal-price font-subheading font-weight-700" style="font-size:1.6rem; color:var(--text-primary);"></span>
+            <span class="modal-price-unit text-secondary" style="font-size:1rem;"></span>
+          </div>
+          <p class="modal-desc text-secondary mb-4" style="font-size:0.9rem; line-height:1.6;"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+
+  <!-- Core Javascripts -->
+  <script src="js/products.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/animations.js"></script>
+
+  <!-- Interactive Counters Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const counters = document.querySelectorAll('.counter-val');
+      
+      const animateCounters = (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const target = entry.target;
+            const targetVal = parseInt(target.getAttribute('data-target'));
+            const suffix = target.getAttribute('data-suffix') || '';
+            let current = 0;
+            
+            // Speed up calculation slightly
+            const duration = 1500; // 1.5 seconds animation
+            const steps = 60;
+            const increment = targetVal / steps;
+            const stepTime = duration / steps;
+            
+            const timer = setInterval(() => {
+              current += increment;
+              if (current >= targetVal) {
+                target.textContent = targetVal + suffix;
+                clearInterval(timer);
+              } else {
+                target.textContent = Math.ceil(current) + suffix;
+              }
+            }, stepTime);
+            
+            observer.unobserve(target);
+          }
+        });
+      };
+
+      const observer = new IntersectionObserver(animateCounters, {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+      });
+      
+      counters.forEach(counter => observer.observe(counter));
+    });
+  </script>
+
+</body>
+</html>

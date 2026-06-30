@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Services | Eternal Home - Luxury Showroom</title>
+  
+  <meta name="description" content="Explore Eternal Home's premium showroom services in Ganderbal, including custom tile layout designs, sanitaryware solutions, bulk supply, and design consultation.">
+  
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animations.css">
+  
+  <style>
+    /* Services Specific Layouts */
+    .services-main-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+    .service-detail-card {
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .service-detail-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 25px;
+    }
+    .service-detail-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(var(--accent-gold-rgb), 0.1);
+      border: 1px solid var(--glass-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      color: var(--accent-gold);
+    }
+    .service-detail-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+    .service-detail-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+    .service-detail-card ul {
+      margin-bottom: 35px;
+      padding-left: 0;
+      list-style: none;
+    }
+    .service-detail-card li {
+      font-size: 0.85rem;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-secondary);
+    }
+    .service-detail-card li i {
+      color: var(--accent-gold);
+    }
+    
+    @media (max-width: 991px) {
+      .services-main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Scroll Progress -->
+  <div id="scroll-progress"></div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <!-- Loading Preloader -->
+  <div id="loading-screen">
+    <div class="loader-logo">ETERNAL<span>HOME</span></div>
+    <div class="loader-bar">
+      <div class="loader-progress"></div>
+    </div>
+  </div>
+
+  <!-- Top Navigation Header -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="images/logo/logo.svg" alt="Eternal Home Logo" style="height: 40px; width: 40px; object-fit: contain;">
+        ETERNAL<span>HOME</span>
+      </a>
+      
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link" id="nav-home">Home</a></li>
+          <li><a href="about.html" class="nav-link" id="nav-about">About</a></li>
+          <li><a href="services.html" class="nav-link active" id="nav-services">Services</a></li>
+          <li><a href="products.html" class="nav-link" id="nav-collections">Collections</a></li>
+          <li><a href="gallery.html" class="nav-link" id="nav-gallery">Gallery</a></li>
+          <li><a href="brands.html" class="nav-link" id="nav-brands">Brands</a></li>
+          <li><a href="contact.html" class="nav-link" id="nav-contact">Contact</a></li>
+        </ul>
+      </nav>
+      
+      <div class="nav-icons">
+        <a href="products.html" class="icon-btn clickable" title="Search"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <a href="wishlist.html" class="icon-btn clickable" title="Wishlist">
+          <i class="fa-regular fa-heart"></i>
+          <span class="icon-badge wishlist-badge" style="display: none;">0</span>
+        </a>
+        <a href="cart.html" class="icon-btn clickable" title="Cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="icon-badge cart-badge" style="display: none;">0</span>
+        </a>
+        
+        <button class="theme-toggle-btn icon-btn clickable" title="Toggle Theme">
+          <i class="fa-solid fa-moon"></i>
+          <i class="fa-solid fa-sun"></i>
+        </button>
+        
+        <button class="hamburger clickable" aria-label="Toggle Navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Inner Hero Section -->
+  <section class="inner-hero" style="background-image: url('images/hero/showroom.png');">
+    <div class="inner-hero-content">
+      <h1 class="inner-hero-title">Showroom <span>Services</span></h1>
+      <ul class="breadcrumbs">
+        <li><a href="index.html">Home</a></li>
+        <li class="active">Services</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Services Grid Section -->
+  <section class="services-detail-section">
+    <div class="container">
+      <div class="section-subtitle">Exquisite Expertise</div>
+      <h2 class="section-title text-center">Comprehensive Interior <span>Solutions</span></h2>
+      
+      <div class="services-main-grid">
+        <!-- Service 1: Premium Tiles -->
+        <div class="service-detail-card glass-panel reveal reveal-up">
+          <div class="service-detail-header">
+            <div class="service-detail-icon"><i class="fa-solid fa-border-all"></i></div>
+            <h3>Premium Tiles Sourcing</h3>
+          </div>
+          <div class="img-zoom-container rounded mb-4" style="height: 220px;">
+            <img src="images/gallery/gallery_tiles.svg" alt="Tiles Showroom" class="w-100 h-100" style="object-fit: cover;">
+          </div>
+          <p>
+            We supply a massive selection of tiles covering floor tiles, wall tiles, bathroom tiles, kitchen tiles, and exterior deck cladding. Partnering with Kajaria, Somany, and Duragres allows us to bring you the highest grade scratch-proof polished surfaces.
+          </p>
+          <ul>
+            <li><i class="fa-solid fa-circle-check"></i> High-Gloss double-charge vitrified slabs</li>
+            <li><i class="fa-solid fa-circle-check"></i> Glazed ceramic wall features and mosaics</li>
+            <li><i class="fa-solid fa-circle-check"></i> Anti-skid matte exterior slate-effect floor panels</li>
+          </ul>
+          <a href="products.html?category=tiles" class="btn btn-secondary mt-auto">Browse Tiles Catalogue</a>
+        </div>
+        
+        <!-- Service 2: Luxury Sanitaryware -->
+        <div class="service-detail-card glass-panel reveal reveal-up delay-1">
+          <div class="service-detail-header">
+            <div class="service-detail-icon"><i class="fa-solid fa-bath"></i></div>
+            <h3>Luxury Sanitaryware & Closets</h3>
+          </div>
+          <div class="img-zoom-container rounded mb-4" style="height: 220px;">
+            <img src="images/gallery/gallery_bathrooms.svg" alt="Sanitaryware Showroom" class="w-100 h-100" style="object-fit: cover;">
+          </div>
+          <p>
+            Reimagine your personal spaces with high-end, hygienic closets, wash basins, and designer sinks. Our products feature advanced nano-glazes that prevent staining and bacterial build-up.
+          </p>
+          <ul>
+            <li><i class="fa-solid fa-circle-check"></i> Wall-hung intelligent radar closets with heated seats</li>
+            <li><i class="fa-solid fa-circle-check"></i> Hand-carved volcanic rock countertop wash basins</li>
+            <li><i class="fa-solid fa-circle-check"></i> Heavy-gauge SUS304 rose gold and gunmetal kitchen sinks</li>
+          </ul>
+          <a href="products.html?category=sanitaryware" class="btn btn-secondary mt-auto">Browse Sanitaryware</a>
+        </div>
+        
+        <!-- Service 3: Bath Solutions -->
+        <div class="service-detail-card glass-panel reveal reveal-up">
+          <div class="service-detail-header">
+            <div class="service-detail-icon"><i class="fa-solid fa-faucet-drip"></i></div>
+            <h3>Designer Faucets & Showers</h3>
+          </div>
+          <div class="img-zoom-container rounded mb-4" style="height: 220px;">
+            <img src="images/gallery/gallery_washbasin.svg" alt="Faucets and Showers Collection" class="w-100 h-100" style="object-fit: cover;">
+          </div>
+          <p>
+            Discover state-of-the-art water delivery. Our brass faucets, mixers, and thermostatic overhead showers are coated with premium PVD finishes (gold, rose gold, matte black) for maximum wear-resistance.
+          </p>
+          <ul>
+            <li><i class="fa-solid fa-circle-check"></i> Touchless automatic sensor basin mixer systems</li>
+            <li><i class="fa-solid fa-circle-check"></i> Overhead rain shower configurations with thermostats</li>
+            <li><i class="fa-solid fa-circle-check"></i> Solid brass bathroom fixtures and robe hooks</li>
+          </ul>
+          <a href="products.html?category=faucets" class="btn btn-secondary mt-auto">Browse Faucets</a>
+        </div>
+        
+        <!-- Service 4: Supply & Consulting -->
+        <div class="service-detail-card glass-panel reveal reveal-up delay-1">
+          <div class="service-detail-header">
+            <div class="service-detail-icon"><i class="fa-solid fa-compass"></i></div>
+            <h3>Interior Consulting & Bulk Supply</h3>
+          </div>
+          <div class="img-zoom-container rounded mb-4" style="height: 220px;">
+            <img src="images/gallery/gallery_showroom.svg" alt="Corporate Alignment Consultations" class="w-100 h-100" style="object-fit: cover;">
+          </div>
+          <p>
+            Building a housing society, boutique hotel, or commercial building? We offer extensive design alignment services, size estimation sheets, custom brand selections, and secure bulk shipping.
+          </p>
+          <ul>
+            <li><i class="fa-solid fa-circle-check"></i> Free floor measurement and tile count calculation</li>
+            <li><i class="fa-solid fa-circle-check"></i> Custom color coordinating matching tiles and vanity components</li>
+            <li><i class="fa-solid fa-circle-check"></i> Bulk shipping discounts and dedicated account coordinators</li>
+          </ul>
+          <a href="contact.html" class="btn btn-secondary mt-auto">Book Consultation</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Floating Actions (WhatsApp & Back to Top) -->
+  <div class="floating-actions">
+    <a href="https://wa.me/917780877456?text=Hi%20Eternal%20Home%2C%20I%20am%20interested%20in%20your%20luxury%20products." 
+       target="_blank" class="float-btn whatsapp-float clickable" id="whatsapp-float" title="Contact on WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <button class="float-btn back-to-top clickable" id="back-to-top" title="Back to Top">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-desc-col">
+          <h3>ETERNAL<span>HOME</span></h3>
+          <p class="footer-desc">
+            Eternal Home is Ganderbal's premium luxury showroom. We curate international-standard tiles, designer bathware, modern sanitaryware, and faucets, providing modern architectural styling to elevate your residential and commercial interiors.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="social-link clickable" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-link clickable" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-link clickable" title="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="#" class="social-link clickable" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul class="footer-links">
+            <li><a href="products.html?category=tiles" class="clickable">Premium Floor Tiles</a></li>
+            <li><a href="products.html?category=tiles" class="clickable">Wall & Designer Tiles</a></li>
+            <li><a href="products.html?category=sanitaryware" class="clickable">Luxury Sanitaryware</a></li>
+            <li><a href="products.html?category=faucets" class="clickable">Designer Faucets</a></li>
+            <li><a href="products.html?category=showers" class="clickable">Rain Shower Systems</a></li>
+            <li><a href="products.html?category=kitchen-sinks" class="clickable">Kitchen Sinks</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="about.html" class="clickable">Our Story</a></li>
+            <li><a href="services.html" class="clickable">Showroom Services</a></li>
+            <li><a href="gallery.html" class="clickable">Inspiration Gallery</a></li>
+            <li><a href="brands.html" class="clickable">Partner Brands</a></li>
+            <li><a href="contact.html" class="clickable">Store Location</a></li>
+            <li><a href="wishlist.html" class="clickable">My Wishlist</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Showroom Info</h4>
+          <ul class="footer-contact">
+            <li>
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Qadri Complex, Near PNB,<br>Beehama, Ganderbal, J&K - 191201</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-phone"></i>
+              <span>+91 7780877456</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-envelope"></i>
+              <span>mail.parahtraders@gmail.com</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-clock"></i>
+              <span>Mon - Sat: 9:30 AM - 7:30 PM<br>Sunday: Closed</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 Eternal Home Tiles & Bathware. All Rights Reserved. Designed for Luxury.</p>
+        <ul class="footer-bottom-links">
+          <li><a href="#" class="clickable">Privacy Policy</a></li>
+          <li><a href="#" class="clickable">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- Universal Product Details Modal Popup -->
+  <div id="product-modal" class="modal-overlay">
+    <div class="modal-container glass-panel">
+      <button class="close-modal modal-close-btn clickable"><i class="fa-solid fa-xmark"></i></button>
+      
+      <div class="modal-grid">
+        <!-- Left Column: Gallery Slider/Image -->
+        <div class="modal-gallery-col">
+          <div class="modal-img-container border rounded">
+            <img src="" alt="" class="modal-main-img w-100 h-100" style="object-fit: cover;">
+          </div>
+        </div>
+        
+        <!-- Right Column: Details Info -->
+        <div class="modal-info-col d-flex flex-column">
+          <div class="mb-3">
+            <span class="modal-brand text-gold font-subheading" style="font-size:0.8rem; font-weight:600; letter-spacing:2px; text-transform:uppercase;"></span>
+            <h2 class="modal-title font-heading mt-1" style="font-size:1.8rem; line-height:1.3; font-weight:700;"></h2>
+          </div>
+
+          <div class="d-flex align-items-center gap-3 mb-4">
+            <span class="modal-stock-badge px-3 py-1 rounded" style="font-size:0.75rem; font-weight:600;"></span>
+            <div class="d-flex align-items-center text-gold gap-1" style="font-size:0.85rem;">
+              <i class="fa-solid fa-star"></i>
+              <span class="modal-rating-val text-primary font-weight-600"></span>
+              <span class="modal-reviews text-muted" style="margin-left: 2px;"></span>
+            </div>
+          </div>
+
+          <div class="modal-price-container mb-4">
+            <span class="modal-price font-subheading font-weight-700" style="font-size:1.6rem; color:var(--text-primary);"></span>
+            <span class="modal-price-unit text-secondary" style="font-size:1rem;"></span>
+          </div>
+
+          <p class="modal-desc text-secondary mb-4" style="font-size:0.9rem; line-height:1.6;"></p>
+          
+          <div class="mb-4">
+            <h4 class="font-subheading font-weight-600 mb-2" style="font-size:0.9rem; letter-spacing:1px; text-transform:uppercase;">Key Features</h4>
+            <ul class="modal-features-list list-unstyled" style="padding-left:0;"></ul>
+          </div>
+
+          <div class="mb-4">
+            <h4 class="font-subheading font-weight-600 mb-2" style="font-size:0.9rem; letter-spacing:1px; text-transform:uppercase;">Available Colors</h4>
+            <div class="modal-colors-swatch d-flex align-items-center"></div>
+          </div>
+
+          <div class="mb-4">
+            <h4 class="font-subheading font-weight-600 mb-2" style="font-size:0.9rem; letter-spacing:1px; text-transform:uppercase;">Specifications</h4>
+            <table class="w-100 modal-specs-table-container">
+              <tbody class="modal-specs-table"></tbody>
+            </table>
+          </div>
+
+          <!-- Checkout Controls -->
+          <div class="mt-auto pt-4 border-top d-flex flex-wrap gap-3">
+            <div class="quantity-controller d-inline-flex align-items-center border rounded">
+              <button class="qty-btn modal-qty-dec px-3 py-2"><i class="fa-solid fa-minus"></i></button>
+              <span class="qty-val modal-qty-val px-4 font-weight-600">1</span>
+              <button class="qty-btn modal-qty-inc px-3 py-2"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            
+            <button class="btn btn-primary modal-add-to-cart flex-grow-1">Add To Cart</button>
+            <button class="btn btn-outline modal-add-wishlist clickable" style="width:50px; padding:0; display:flex; align-items:center; justify-content:center;" title="Save Favorite">
+              <i class="fa-regular fa-heart" style="font-size: 1.25rem;"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared Javascript Modules -->
+  <script src="js/products.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

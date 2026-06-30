@@ -1,0 +1,25 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#0E1624"/>
+        <stop offset="100%" stop-color="#162238"/>
+      </linearGradient>
+      <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#D4AF37"/>
+        <stop offset="100%" stop-color="#856404"/>
+      </linearGradient>
+    </defs>
+    <rect width="800" height="600" fill="url(#bg)"/>
+    <rect x="20" y="20" width="760" height="560" fill="none" stroke="url(#gold)" stroke-width="2" rx="8" opacity="0.4"/>
+    
+    <!-- Decorative curves -->
+    <path d="M 20 150 C 300 80, 500 250, 780 150" fill="none" stroke="url(#gold)" stroke-width="1" opacity="0.2"/>
+    <path d="M 20 450 C 300 380, 500 550, 780 450" fill="none" stroke="url(#gold)" stroke-width="1" opacity="0.2"/>
+    
+    <text x="50%" y="280" font-family="'Playfair Display', Georgia, serif" font-size="32" fill="#F8FAFC" font-weight="bold" text-anchor="middle" letter-spacing="2">Emperor Emerald Tile Detail</text>
+    <text x="50%" y="330" font-family="'Montserrat', sans-serif" font-size="18" fill="#D4AF37" font-weight="600" text-anchor="middle" letter-spacing="4">TILES</text>
+    <text x="50%" y="380" font-family="'Poppins', sans-serif" font-size="14" fill="#94A3B8" text-anchor="middle">Premium Luxury Collection</text>
+    
+    <circle cx="400" cy="180" r="40" fill="rgba(212, 175, 55, 0.1)" stroke="#D4AF37" stroke-width="1.5"/>
+    <path d="M 390 180 L 410 180 M 400 170 L 400 190" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
+  </svg>

@@ -1,0 +1,17 @@
+<svg width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#080C14"/>
+        <stop offset="100%" stop-color="#0E1624"/>
+      </linearGradient>
+      <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#D4AF37"/>
+        <stop offset="100%" stop-color="#AA8B2C"/>
+      </linearGradient>
+    </defs>
+    <rect width="800" height="800" fill="url(#bg)"/>
+    <rect x="25" y="25" width="750" height="750" fill="none" stroke="url(#gold)" stroke-width="2" opacity="0.3"/>
+    
+    <text x="50%" y="400" font-family="'Playfair Display', Georgia, serif" font-size="36" fill="#F8FAFC" font-weight="bold" text-anchor="middle" letter-spacing="2">INTERIORS</text>
+    <text x="50%" y="450" font-family="'Montserrat', sans-serif" font-size="14" fill="#D4AF37" font-weight="600" text-anchor="middle" letter-spacing="5">ETERNAL SHOWROOM</text>
+  </svg>

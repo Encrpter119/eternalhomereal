@@ -1,0 +1,5 @@
+<svg width="300" height="150" viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="150" fill="transparent"/>
+    <rect x="10" y="10" width="280" height="130" fill="none" stroke="rgba(212, 175, 55, 0.2)" stroke-width="1" rx="6"/>
+    <text x="50%" y="85" font-family="'Playfair Display', Georgia, serif" font-size="28" fill="#F8FAFC" font-weight="bold" text-anchor="middle" letter-spacing="3">Asian Granito</text>
+  </svg>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Eternal Home - Premium Showroom</title>
+  
+  <meta name="description" content="Get directions to Eternal Home Ganderbal. Contact us for inquiries about floor tiles, designer bathware, mixers, or kitchen sinks. Call +91 7780877456.">
+  
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <!-- Scroll Progress -->
+  <div id="scroll-progress"></div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <!-- Loading Preloader -->
+  <div id="loading-screen">
+    <div class="loader-logo">ETERNAL<span>HOME</span></div>
+    <div class="loader-bar">
+      <div class="loader-progress"></div>
+    </div>
+  </div>
+
+  <!-- Top Navigation Header -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="images/logo/logo.svg" alt="Eternal Home Logo" style="height: 40px; width: 40px; object-fit: contain;">
+        ETERNAL<span>HOME</span>
+      </a>
+      
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link" id="nav-home">Home</a></li>
+          <li><a href="about.html" class="nav-link" id="nav-about">About</a></li>
+          <li><a href="services.html" class="nav-link" id="nav-services">Services</a></li>
+          <li><a href="products.html" class="nav-link" id="nav-collections">Collections</a></li>
+          <li><a href="gallery.html" class="nav-link" id="nav-gallery">Gallery</a></li>
+          <li><a href="brands.html" class="nav-link" id="nav-brands">Brands</a></li>
+          <li><a href="contact.html" class="nav-link active" id="nav-contact">Contact</a></li>
+        </ul>
+      </nav>
+      
+      <div class="nav-icons">
+        <a href="products.html" class="icon-btn clickable" title="Search"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <a href="wishlist.html" class="icon-btn clickable" title="Wishlist">
+          <i class="fa-regular fa-heart"></i>
+          <span class="icon-badge wishlist-badge" style="display: none;">0</span>
+        </a>
+        <a href="cart.html" class="icon-btn clickable" title="Cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="icon-badge cart-badge" style="display: none;">0</span>
+        </a>
+        
+        <button class="theme-toggle-btn icon-btn clickable" title="Toggle Theme">
+          <i class="fa-solid fa-moon"></i>
+          <i class="fa-solid fa-sun"></i>
+        </button>
+        
+        <button class="hamburger clickable" aria-label="Toggle Navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Inner Hero Section -->
+  <section class="inner-hero" style="background-image: url('images/hero/showroom.png');">
+    <div class="inner-hero-content">
+      <h1 class="inner-hero-title">Contact <span>Us</span></h1>
+      <ul class="breadcrumbs">
+        <li><a href="index.html">Home</a></li>
+        <li class="active">Contact</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contact Form & Store Details Section -->
+  <section class="contact-page-section">
+    <div class="container">
+      <div class="section-subtitle">Store Details</div>
+      <h2 class="section-title text-center">Visit Our <span>Showroom</span></h2>
+      
+      <div class="row">
+        <!-- Contact details -->
+        <div class="col-md-6 reveal reveal-left">
+          <div class="glass-panel p-5 h-100 d-flex flex-column justify-content-between" style="padding: 40px;">
+            <div>
+              <h3 class="font-heading mb-4" style="font-size: 1.8rem;">Eternal Home Ganderbal</h3>
+              <p class="text-secondary mb-4">We would love to show you our luxury collections in person. Visit our premium showroom or call us directly for stock status and prices.</p>
+              
+              <ul class="list-unstyled mb-5" style="display:flex; flex-direction:column; gap:20px;">
+                <li class="d-flex align-items-center gap-3">
+                  <i class="fa-solid fa-location-dot text-gold" style="font-size:1.2rem; width:25px;"></i>
+                  <span>Qadri Complex, Near PNB, Beehama, Ganderbal, J&K - 191201</span>
+                </li>
+                <li class="d-flex align-items-center gap-3">
+                  <i class="fa-solid fa-phone text-gold" style="font-size:1.2rem; width:25px;"></i>
+                  <span>+91 7780877456</span>
+                </li>
+                <li class="d-flex align-items-center gap-3">
+                  <i class="fa-solid fa-envelope text-gold" style="font-size:1.2rem; width:25px;"></i>
+                  <span>mail.parahtraders@gmail.com</span>
+                </li>
+                <li class="d-flex align-items-center gap-3">
+                  <i class="fa-solid fa-clock text-gold" style="font-size:1.2rem; width:25px;"></i>
+                  <span>Mon - Sat: 9:30 AM - 7:30 PM<br>Sunday: Closed</span>
+                </li>
+              </ul>
+            </div>
+            
+            <!-- Map Placeholder -->
+            <div class="map-container border rounded" style="height: 220px; background:var(--bg-tertiary); overflow:hidden; position:relative;">
+              <div class="w-100 h-100 d-flex align-items-center justify-content-center flex-column text-center text-muted" style="padding: 20px;">
+                <i class="fa-solid fa-map-location-dot fa-2x mb-2 text-gold"></i>
+                <h4 class="font-subheading text-primary font-weight-600 mb-1" style="font-size:0.95rem;">Beehama Showroom Map</h4>
+                <p style="font-size:0.8rem;">Qadri Complex, Ganderbal (Near Punjab National Bank)</p>
+                <a href="https://maps.google.com" target="_blank" class="text-gold font-weight-600 mt-2 clickable" style="font-size:0.8rem;">Open Google Maps <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Contact Form -->
+        <div class="col-md-6 reveal reveal-right delay-1">
+          <form id="contact-form" class="glass-panel p-5 h-100" style="padding: 40px;">
+            <h3 class="font-heading mb-4" style="font-size:1.8rem;">Send An Inquiry</h3>
+            <p class="text-secondary mb-4">Have specific dimensional requirements or brand options? Ask us directly.</p>
+            
+            <div class="form-group">
+              <label for="form-name">Full Name</label>
+              <input type="text" id="form-name" class="form-control" placeholder="Your full name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="form-phone">Mobile Number</label>
+              <input type="tel" id="form-phone" class="form-control" placeholder="10-digit mobile number" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="form-email">Email Address</label>
+              <input type="email" id="form-email" class="form-control" placeholder="Your email address" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="form-message">Requirement Message</label>
+              <textarea id="form-message" class="form-control" rows="6" placeholder="Mention product type, brands, quantity, or sizes..." required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary w-100 mt-3">Submit Inquiry</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Floating Actions (WhatsApp & Back to Top) -->
+  <div class="floating-actions">
+    <a href="https://wa.me/917780877456?text=Hi%20Eternal%20Home%2C%20I%20am%20interested%20in%20your%20luxury%20products." 
+       target="_blank" class="float-btn whatsapp-float clickable" id="whatsapp-float" title="Contact on WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <button class="float-btn back-to-top clickable" id="back-to-top" title="Back to Top">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-desc-col">
+          <h3>ETERNAL<span>HOME</span></h3>
+          <p class="footer-desc">
+            Eternal Home is Ganderbal's premium luxury showroom. We curate international-standard tiles, designer bathware, modern sanitaryware, and faucets, providing modern architectural styling to elevate your residential and commercial interiors.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="social-link clickable" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-link clickable" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-link clickable" title="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="#" class="social-link clickable" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul class="footer-links">
+            <li><a href="products.html?category=tiles" class="clickable">Premium Floor Tiles</a></li>
+            <li><a href="products.html?category=tiles" class="clickable">Wall & Designer Tiles</a></li>
+            <li><a href="products.html?category=sanitaryware" class="clickable">Luxury Sanitaryware</a></li>
+            <li><a href="products.html?category=faucets" class="clickable">Designer Faucets</a></li>
+            <li><a href="products.html?category=showers" class="clickable">Rain Shower Systems</a></li>
+            <li><a href="products.html?category=kitchen-sinks" class="clickable">Kitchen Sinks</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="about.html" class="clickable">Our Story</a></li>
+            <li><a href="services.html" class="clickable">Showroom Services</a></li>
+            <li><a href="gallery.html" class="clickable">Inspiration Gallery</a></li>
+            <li><a href="brands.html" class="clickable">Partner Brands</a></li>
+            <li><a href="contact.html" class="clickable">Store Location</a></li>
+            <li><a href="wishlist.html" class="clickable">My Wishlist</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Showroom Info</h4>
+          <ul class="footer-contact">
+            <li>
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Qadri Complex, Near PNB,<br>Beehama, Ganderbal, J&K - 191201</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-phone"></i>
+              <span>+91 7780877456</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-envelope"></i>
+              <span>mail.parahtraders@gmail.com</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-clock"></i>
+              <span>Mon - Sat: 9:30 AM - 7:30 PM<br>Sunday: Closed</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 Eternal Home Tiles & Bathware. All Rights Reserved. Designed for Luxury.</p>
+        <ul class="footer-bottom-links">
+          <li><a href="#" class="clickable">Privacy Policy</a></li>
+          <li><a href="#" class="clickable">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- Universal Product Details Modal Popup -->
+  <div id="product-modal" class="modal-overlay">
+    <div class="modal-container glass-panel">
+      <button class="close-modal modal-close-btn clickable"><i class="fa-solid fa-xmark"></i></button>
+      
+      <div class="modal-grid">
+        <!-- Left Column: Gallery Slider/Image -->
+        <div class="modal-gallery-col">
+          <div class="modal-img-container border rounded">
+            <img src="" alt="" class="modal-main-img w-100 h-100" style="object-fit: cover;">
+          </div>
+        </div>
+        
+        <!-- Right Column: Details Info -->
+        <div class="modal-info-col d-flex flex-column">
+          <div class="mb-3">
+            <span class="modal-brand text-gold font-subheading" style="font-size:0.8rem; font-weight:600; letter-spacing:2px; text-transform:uppercase;"></span>
+            <h2 class="modal-title font-heading mt-1" style="font-size:1.8rem; line-height:1.3; font-weight:700;"></h2>
+          </div>
+
+          <div class="d-flex align-items-center gap-3 mb-4">
+            <span class="modal-stock-badge px-3 py-1 rounded" style="font-size:0.75rem; font-weight:600;"></span>
+            <div class="d-flex align-items-center text-gold gap-1" style="font-size:0.85rem;">
+              <i class="fa-solid fa-star"></i>
+              <span class="modal-rating-val text-primary font-weight-600"></span>
+              <span class="modal-reviews text-muted" style="margin-left: 2px;"></span>
+            </div>
+          </div>
+
+          <div class="modal-price-container mb-4">
+            <span class="modal-price font-subheading font-weight-700" style="font-size:1.6rem; color:var(--text-primary);"></span>
+            <span class="modal-price-unit text-secondary" style="font-size:1rem;"></span>
+          </div>
+
+          <p class="modal-desc text-secondary mb-4" style="font-size:0.9rem; line-height:1.6;"></p>
+          
+          <div class="mb-4">
+            <h4 class="font-subheading font-weight-600 mb-2" style="font-size:0.9rem; letter-spacing:1px; text-transform:uppercase;">Key Features</h4>
+            <ul class="modal-features-list list-unstyled" style="padding-left:0;"></ul>
+          </div>
+
+          <div class="mb-4">
+            <h4 class="font-subheading font-weight-600 mb-2" style="font-size:0.9rem; letter-spacing:1px; text-transform:uppercase;">Available Colors</h4>
+            <div class="modal-colors-swatch d-flex align-items-center"></div>
+          </div>
+
+          <div class="mb-4">
+            <h4 class="font-subheading font-weight-600 mb-2" style="font-size:0.9rem; letter-spacing:1px; text-transform:uppercase;">Specifications</h4>
+            <table class="w-100 modal-specs-table-container">
+              <tbody class="modal-specs-table"></tbody>
+            </table>
+          </div>
+
+          <!-- Checkout Controls -->
+          <div class="mt-auto pt-4 border-top d-flex flex-wrap gap-3">
+            <div class="quantity-controller d-inline-flex align-items-center border rounded">
+              <button class="qty-btn modal-qty-dec px-3 py-2"><i class="fa-solid fa-minus"></i></button>
+              <span class="qty-val modal-qty-val px-4 font-weight-600">1</span>
+              <button class="qty-btn modal-qty-inc px-3 py-2"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            
+            <button class="btn btn-primary modal-add-to-cart flex-grow-1">Add To Cart</button>
+            <button class="btn btn-outline modal-add-wishlist clickable" style="width:50px; padding:0; display:flex; align-items:center; justify-content:center;" title="Save Favorite">
+              <i class="fa-regular fa-heart" style="font-size: 1.25rem;"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared Javascript Modules -->
+  <script src="js/products.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/app.js"></script>
+  
+  <script>
+    // Extract query parameter and fill into textarea
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const msgParam = urlParams.get('message');
+      
+      if (msgParam) {
+        const textarea = document.getElementById('form-message');
+        if (textarea) {
+          textarea.value = msgParam;
+        }
+      }
+    });
+  </script>
+</body>
+</html>

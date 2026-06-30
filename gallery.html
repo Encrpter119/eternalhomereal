@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery | Eternal Home - Premium Showroom</title>
+  
+  <meta name="description" content="Get design inspiration for your bathrooms, kitchens, and living rooms. Explore luxury tile layouts and modern home showrooms at Eternal Home.">
+  
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animations.css">
+  
+  <style>
+    /* Masonry Gallery Styles */
+    .gallery-filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .gallery-filter-tag {
+      font-family: var(--font-subheading);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 10px 24px;
+      border: 1px solid var(--glass-border);
+      border-radius: 4px;
+      color: var(--text-secondary);
+      background: var(--glass-bg);
+      transition: var(--transition-smooth);
+    }
+    .gallery-filter-tag:hover, .gallery-filter-tag.active {
+      color: var(--accent-gold);
+      border-color: var(--accent-gold);
+      box-shadow: var(--gold-glow);
+    }
+    
+    .masonry-grid {
+      column-count: 3;
+      column-gap: 24px;
+      width: 100%;
+    }
+    .masonry-item {
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 24px;
+      break-inside: avoid;
+      position: relative;
+      cursor: pointer;
+    }
+    .gallery-card {
+      border: 1px solid var(--glass-border);
+      position: relative;
+      overflow: hidden;
+    }
+    .gallery-card img {
+      width: 100%;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .gallery-card-hover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(8, 12, 20, 0.85);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      padding: 20px;
+      text-align: center;
+    }
+    .gallery-card:hover img {
+      transform: scale(1.06);
+    }
+    .gallery-card:hover .gallery-card-hover {
+      opacity: 1;
+    }
+    .gallery-card-hover h3 {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+    .gallery-card-hover span {
+      font-family: var(--font-subheading);
+      font-size: 0.75rem;
+      color: var(--accent-gold);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    
+    /* Lightbox Modal overlay */
+    .lightbox-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(8, 12, 20, 0.95);
+      z-index: 20000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease, visibility 0.4s;
+    }
+    .lightbox-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    .lightbox-container {
+      max-width: 90%;
+      max-height: 80vh;
+      position: relative;
+    }
+    .lightbox-img {
+      max-width: 100%;
+      max-height: 80vh;
+      border: 2px solid var(--accent-gold);
+      border-radius: 4px;
+      object-fit: contain;
+    }
+    .lightbox-caption {
+      text-align: center;
+      color: var(--text-primary);
+      margin-top: 15px;
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+    }
+    .lightbox-close-btn {
+      position: absolute;
+      top: -50px;
+      right: 0;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-size: 2rem;
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+    .lightbox-close-btn:hover {
+      color: var(--accent-gold);
+    }
+    .lightbox-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--glass-border);
+      color: var(--text-primary);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+    .lightbox-nav-btn:hover {
+      background: var(--accent-gold);
+      color: #000;
+      border-color: var(--accent-gold);
+    }
+    .lightbox-prev { left: -80px; }
+    .lightbox-next { right: -80px; }
+    
+    @media (max-width: 991px) {
+      .masonry-grid { column-count: 2; }
+    }
+    @media (max-width: 600px) {
+      .masonry-grid { column-count: 1; }
+      .lightbox-prev { left: -40px; }
+      .lightbox-next { right: -40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Scroll Progress -->
+  <div id="scroll-progress"></div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <!-- Loading Preloader -->
+  <div id="loading-screen">
+    <div class="loader-logo">ETERNAL<span>HOME</span></div>
+    <div class="loader-bar">
+      <div class="loader-progress"></div>
+    </div>
+  </div>
+
+  <!-- Top Navigation Header -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="images/logo/logo.svg" alt="Eternal Home Logo" style="height: 40px; width: 40px; object-fit: contain;">
+        ETERNAL<span>HOME</span>
+      </a>
+      
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link" id="nav-home">Home</a></li>
+          <li><a href="about.html" class="nav-link" id="nav-about">About</a></li>
+          <li><a href="services.html" class="nav-link" id="nav-services">Services</a></li>
+          <li><a href="products.html" class="nav-link" id="nav-collections">Collections</a></li>
+          <li><a href="gallery.html" class="nav-link active" id="nav-gallery">Gallery</a></li>
+          <li><a href="brands.html" class="nav-link" id="nav-brands">Brands</a></li>
+          <li><a href="contact.html" class="nav-link" id="nav-contact">Contact</a></li>
+        </ul>
+      </nav>
+      
+      <div class="nav-icons">
+        <a href="products.html" class="icon-btn clickable" title="Search"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <a href="wishlist.html" class="icon-btn clickable" title="Wishlist">
+          <i class="fa-regular fa-heart"></i>
+          <span class="icon-badge wishlist-badge" style="display: none;">0</span>
+        </a>
+        <a href="cart.html" class="icon-btn clickable" title="Cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="icon-badge cart-badge" style="display: none;">0</span>
+        </a>
+        
+        <button class="theme-toggle-btn icon-btn clickable" title="Toggle Theme">
+          <i class="fa-solid fa-moon"></i>
+          <i class="fa-solid fa-sun"></i>
+        </button>
+        
+        <button class="hamburger clickable" aria-label="Toggle Navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Inner Hero Section -->
+  <section class="inner-hero" style="background-image: url('images/hero/showroom.png');">
+    <div class="inner-hero-content">
+      <h1 class="inner-hero-title">Showroom <span>Gallery</span></h1>
+      <ul class="breadcrumbs">
+        <li><a href="index.html">Home</a></li>
+        <li class="active">Gallery</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Masonry Gallery Section -->
+  <section class="gallery-section">
+    <div class="container">
+      <div class="section-subtitle">Exquisite Spaces</div>
+      <h2 class="section-title text-center">Inspirational Layouts & <span>Interiors</span></h2>
+      
+      <!-- Filter Tags -->
+      <div class="gallery-filter-bar reveal reveal-up">
+        <button class="gallery-filter-tag active" data-filter="all">All Photos</button>
+        <button class="gallery-filter-tag" data-filter="tiles">Tiles</button>
+        <button class="gallery-filter-tag" data-filter="bathrooms">Bathrooms</button>
+        <button class="gallery-filter-tag" data-filter="showroom">Showroom</button>
+        <button class="gallery-filter-tag" data-filter="kitchen">Kitchen</button>
+        <button class="gallery-filter-tag" data-filter="washbasin">Wash Basin</button>
+      </div>
+      
+      <!-- Masonry Grid -->
+      <div class="masonry-grid reveal reveal-up delay-1">
+        <!-- Item 1 -->
+        <div class="masonry-item" data-category="tiles">
+          <div class="gallery-card glass-panel rounded">
+            <img src="images/gallery/gallery_tiles.svg" alt="Luxury Statuario Slab Installation">
+            <div class="gallery-card-hover">
+              <h3>Statuario Tile Setup</h3>
+              <span>Tiles</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Item 2 -->
+        <div class="masonry-item" data-category="bathrooms">
+          <div class="gallery-card glass-panel rounded">
+            <img src="images/gallery/gallery_bathrooms.svg" alt="Gold Shower Master Bathroom">
+            <div class="gallery-card-hover">
+              <h3>Rain Shower Suite</h3>
+              <span>Bathrooms</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Item 3 -->
+        <div class="masonry-item" data-category="showroom">
+          <div class="gallery-card glass-panel rounded">
+            <img src="images/gallery/gallery_showroom.svg" alt="Eternal Home Showroom Bay">
+            <div class="gallery-card-hover">
+              <h3>Ganderbal Showroom Interior</h3>
+              <span>Showroom</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Item 4 -->
+        <div class="masonry-item" data-category="kitchen">
+          <div class="gallery-card glass-panel rounded">
+            <img src="images/gallery/gallery_kitchen.svg" alt="Rose Gold Double Basin Kitchen Setup">
+            <div class="gallery-card-hover">
+              <h3>Modern Rose Gold Sink</h3>
+              <span>Kitchen</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Item 5 -->
+        <div class="masonry-item" data-category="washbasin">
+          <div class="gallery-card glass-panel rounded">
+            <img src="images/gallery/gallery_washbasin.svg" alt="Polished Volcanic Countertop Basin">
+            <div class="gallery-card-hover">
+              <h3>Lava Stone Basin</h3>
+              <span>Wash Basin</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Item 6 -->
+        <div class="masonry-item" data-category="tiles">
+          <div class="gallery-card glass-panel rounded">
+            <img src="images/gallery/gallery_interiors.svg" alt="Hexagonal Accent Wall Layout">
+            <div class="gallery-card-hover">
+              <h3>Onyx Gold Hexagonal Wall</h3>
+              <span>Tiles</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- Fullscreen Lightbox Overlay -->
+  <div class="lightbox-overlay" id="lightbox-modal">
+    <button class="lightbox-close-btn" id="lightbox-close"><i class="fa-solid fa-xmark"></i></button>
+    <button class="lightbox-nav-btn lightbox-prev" id="lightbox-prev"><i class="fa-solid fa-chevron-left"></i></button>
+    
+    <div class="lightbox-container">
+      <img src="" alt="" class="lightbox-img" id="lightbox-img">
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+    
+    <button class="lightbox-nav-btn lightbox-next" id="lightbox-next"><i class="fa-solid fa-chevron-right"></i></button>
+  </div>
+
+  <!-- Floating Actions (WhatsApp & Back to Top) -->
+  <div class="floating-actions">
+    <a href="https://wa.me/917780877456?text=Hi%20Eternal%20Home%2C%20I%20am%20interested%20in%20your%20luxury%20products." 
+       target="_blank" class="float-btn whatsapp-float clickable" id="whatsapp-float" title="Contact on WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <button class="float-btn back-to-top clickable" id="back-to-top" title="Back to Top">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-desc-col">
+          <h3>ETERNAL<span>HOME</span></h3>
+          <p class="footer-desc">
+            Eternal Home is Ganderbal's premium luxury showroom. We curate international-standard tiles, designer bathware, modern sanitaryware, and faucets, providing modern architectural styling to elevate your residential and commercial interiors.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="social-link clickable" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-link clickable" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-link clickable" title="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="#" class="social-link clickable" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul class="footer-links">
+            <li><a href="products.html?category=tiles" class="clickable">Premium Floor Tiles</a></li>
+            <li><a href="products.html?category=tiles" class="clickable">Wall & Designer Tiles</a></li>
+            <li><a href="products.html?category=sanitaryware" class="clickable">Luxury Sanitaryware</a></li>
+            <li><a href="products.html?category=faucets" class="clickable">Designer Faucets</a></li>
+            <li><a href="products.html?category=showers" class="clickable">Rain Shower Systems</a></li>
+            <li><a href="products.html?category=kitchen-sinks" class="clickable">Kitchen Sinks</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="about.html" class="clickable">Our Story</a></li>
+            <li><a href="services.html" class="clickable">Showroom Services</a></li>
+            <li><a href="gallery.html" class="clickable">Inspiration Gallery</a></li>
+            <li><a href="brands.html" class="clickable">Partner Brands</a></li>
+            <li><a href="contact.html" class="clickable">Store Location</a></li>
+            <li><a href="wishlist.html" class="clickable">My Wishlist</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Showroom Info</h4>
+          <ul class="footer-contact">
+            <li>
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Qadri Complex, Near PNB,<br>Beehama, Ganderbal, J&K - 191201</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-phone"></i>
+              <span>+91 7780877456</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-envelope"></i>
+              <span>mail.parahtraders@gmail.com</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-clock"></i>
+              <span>Mon - Sat: 9:30 AM - 7:30 PM<br>Sunday: Closed</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 Eternal Home Tiles & Bathware. All Rights Reserved. Designed for Luxury.</p>
+        <ul class="footer-bottom-links">
+          <li><a href="#" class="clickable">Privacy Policy</a></li>
+          <li><a href="#" class="clickable">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- Universal Product Details Modal Popup -->
+  <div id="product-modal" class="modal-overlay">
+    <div class="modal-container glass-panel">
+      <button class="close-modal modal-close-btn clickable"><i class="fa-solid fa-xmark"></i></button>
+      
+      <div class="modal-grid">
+        <!-- Left Column: Gallery Slider/Image -->
+        <div class="modal-gallery-col">
+          <div class="modal-img-container border rounded">
+            <img src="" alt="" class="modal-main-img w-100 h-100" style="object-fit: cover;">
+          </div>
+        </div>
+        
+        <!-- Right Column: Details Info -->
+        <div class="modal-info-col d-flex flex-column">
+          <div class="mb-3">
+            <span class="modal-brand text-gold font-subheading" style="font-size:0.8rem; font-weight:600; letter-spacing:2px; text-transform:uppercase;"></span>
+            <h2 class="modal-title font-heading mt-1" style="font-size:1.8rem; line-height:1.3; font-weight:700;"></h2>
+          </div>
+
+          <div class="d-flex align-items-center gap-3 mb-4">
+            <span class="modal-stock-badge px-3 py-1 rounded" style="font-size:0.75rem; font-weight:600;"></span>
+            <div class="d-flex align-items-center text-gold gap-1" style="font-size:0.85rem;">
+              <i class="fa-solid fa-star"></i>
+              <span class="modal-rating-val text-primary font-weight-600"></span>
+              <span class="modal-reviews text-muted" style="margin-left: 2px;"></span>
+            </div>
+          </div>
+
+          <div class="modal-price-container mb-4">
+            <span class="modal-price font-subheading font-weight-700" style="font-size:1.6rem; color:var(--text-primary);"></span>
+            <span class="modal-price-unit text-secondary" style="font-size:1rem;"></span>
+          </div>
+
+          <p class="modal-desc text-secondary mb-4" style="font-size:0.9rem; line-height:1.6;"></p>
+          
+          <div class="mb-4">
+            <h4 class="font-subheading font-weight-600 mb-2" style="font-size:0.9rem; letter-spacing:1px; text-transform:uppercase;">Key Features</h4>
+            <ul class="modal-features-list list-unstyled" style="padding-left:0;"></ul>
+          </div>
+
+          <div class="mb-4">
+            <h4 class="font-subheading font-weight-600 mb-2" style="font-size:0.9rem; letter-spacing:1px; text-transform:uppercase;">Available Colors</h4>
+            <div class="modal-colors-swatch d-flex align-items-center"></div>
+          </div>
+
+          <div class="mb-4">
+            <h4 class="font-subheading font-weight-600 mb-2" style="font-size:0.9rem; letter-spacing:1px; text-transform:uppercase;">Specifications</h4>
+            <table class="w-100 modal-specs-table-container">
+              <tbody class="modal-specs-table"></tbody>
+            </table>
+          </div>
+
+          <!-- Checkout Controls -->
+          <div class="mt-auto pt-4 border-top d-flex flex-wrap gap-3">
+            <div class="quantity-controller d-inline-flex align-items-center border rounded">
+              <button class="qty-btn modal-qty-dec px-3 py-2"><i class="fa-solid fa-minus"></i></button>
+              <span class="qty-val modal-qty-val px-4 font-weight-600">1</span>
+              <button class="qty-btn modal-qty-inc px-3 py-2"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            
+            <button class="btn btn-primary modal-add-to-cart flex-grow-1">Add To Cart</button>
+            <button class="btn btn-outline modal-add-wishlist clickable" style="width:50px; padding:0; display:flex; align-items:center; justify-content:center;" title="Save Favorite">
+              <i class="fa-regular fa-heart" style="font-size: 1.25rem;"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared Javascript Modules -->
+  <script src="js/products.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/app.js"></script>
+  
+  <script>
+    // Self-contained Lightbox Controller
+    document.addEventListener('DOMContentLoaded', () => {
+      const items = Array.from(document.querySelectorAll('.masonry-item'));
+      const filters = document.querySelectorAll('.gallery-filter-tag');
+      const lightbox = document.getElementById('lightbox-modal');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxCaption = document.getElementById('lightbox-caption');
+      const closeBtn = document.getElementById('lightbox-close');
+      const prevBtn = document.getElementById('lightbox-prev');
+      const nextBtn = document.getElementById('lightbox-next');
+      
+      let currentIndex = 0;
+      let activeItems = [...items];
+
+      // 1. Tag Filtering
+      filters.forEach(tag => {
+        tag.addEventListener('click', () => {
+          filters.forEach(t => t.classList.remove('active'));
+          tag.classList.add('active');
+          
+          const filterVal = tag.getAttribute('data-filter');
+          
+          items.forEach(item => {
+            const cat = item.getAttribute('data-category');
+            if (filterVal === 'all' || cat === filterVal) {
+              item.style.display = 'inline-block';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+          
+          // Re-populate active indexes
+          activeItems = items.filter(item => {
+            const cat = item.getAttribute('data-category');
+            return filterVal === 'all' || cat === filterVal;
+          });
+        });
+      });
+
+      // 2. Lightbox Open
+      items.forEach(item => {
+        item.addEventListener('click', () => {
+          currentIndex = activeItems.indexOf(item);
+          openLightbox();
+        });
+      });
+
+      function openLightbox() {
+        const item = activeItems[currentIndex];
+        if (!item) return;
+
+        const img = item.querySelector('img');
+        const h3 = item.querySelector('h3');
+
+        lightboxImg.src = img.src;
+        lightboxCaption.textContent = h3.textContent;
+        
+        lightbox.classList.add('show');
+        document.body.style.overflow = 'hidden';
+      }
+
+      // Close Lightbox
+      function closeLightbox() {
+        lightbox.classList.remove('show');
+        document.body.style.overflow = '';
+      }
+
+      closeBtn.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+
+      // Navigate Lightbox
+      prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        currentIndex = (currentIndex - 1 + activeItems.length) % activeItems.length;
+        openLightbox();
+      });
+
+      nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        currentIndex = (currentIndex + 1) % activeItems.length;
+        openLightbox();
+      });
+    });
+  </script>
+</body>
+</html>

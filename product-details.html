@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details | Eternal Home - Premium Showroom</title>
+  
+  <meta name="description" content="View specifications, colors, sizes, and brand details for our premium tiles, sanitaryware, and bathware fittings at Eternal Home Ganderbal.">
+  
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animations.css">
+  
+  <style>
+    /* Standalone Details Page Styles */
+    .details-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1.3fr;
+      gap: 50px;
+    }
+    .detail-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .detail-main-img-wrapper {
+      height: 480px;
+      background: var(--bg-tertiary);
+      overflow: hidden;
+      border: 1px solid var(--glass-border);
+    }
+    .detail-thumbs {
+      display: flex;
+      gap: 15px;
+    }
+    .thumb-item {
+      width: 80px;
+      height: 80px;
+      border: 1px solid var(--glass-border);
+      background: var(--bg-tertiary);
+      cursor: pointer;
+      overflow: hidden;
+      transition: var(--transition-fast);
+      border-radius: 4px;
+    }
+    .thumb-item:hover, .thumb-item.active {
+      border-color: var(--accent-gold);
+    }
+    
+    .detail-info h2 {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-top: 5px;
+    }
+    
+    .detail-specs-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .detail-specs-table tr {
+      border-bottom: 1px solid rgba(var(--accent-gold-rgb), 0.1);
+    }
+    .detail-specs-table tr:last-child {
+      border-bottom: none;
+    }
+    .detail-specs-table td {
+      padding: 12px 0;
+      font-size: 0.9rem;
+    }
+    
+    .related-section {
+      padding-top: 60px;
+      border-top: 1px solid var(--glass-border);
+      margin-top: 80px;
+    }
+    
+    @media (max-width: 991px) {
+      .details-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .detail-main-img-wrapper {
+        height: 380px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Scroll Progress -->
+  <div id="scroll-progress"></div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <!-- Loading Preloader -->
+  <div id="loading-screen">
+    <div class="loader-logo">ETERNAL<span>HOME</span></div>
+    <div class="loader-bar">
+      <div class="loader-progress"></div>
+    </div>
+  </div>
+
+  <!-- Top Navigation Header -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="images/logo/logo.svg" alt="Eternal Home Logo" style="height: 40px; width: 40px; object-fit: contain;">
+        ETERNAL<span>HOME</span>
+      </a>
+      
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link" id="nav-home">Home</a></li>
+          <li><a href="about.html" class="nav-link" id="nav-about">About</a></li>
+          <li><a href="services.html" class="nav-link" id="nav-services">Services</a></li>
+          <li><a href="products.html" class="nav-link active" id="nav-collections">Collections</a></li>
+          <li><a href="gallery.html" class="nav-link" id="nav-gallery">Gallery</a></li>
+          <li><a href="brands.html" class="nav-link" id="nav-brands">Brands</a></li>
+          <li><a href="contact.html" class="nav-link" id="nav-contact">Contact</a></li>
+        </ul>
+      </nav>
+      
+      <div class="nav-icons">
+        <a href="products.html" class="icon-btn clickable" title="Search"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <a href="wishlist.html" class="icon-btn clickable" title="Wishlist">
+          <i class="fa-regular fa-heart"></i>
+          <span class="icon-badge wishlist-badge" style="display: none;">0</span>
+        </a>
+        <a href="cart.html" class="icon-btn clickable" title="Cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="icon-badge cart-badge" style="display: none;">0</span>
+        </a>
+        
+        <button class="theme-toggle-btn icon-btn clickable" title="Toggle Theme">
+          <i class="fa-solid fa-moon"></i>
+          <i class="fa-solid fa-sun"></i>
+        </button>
+        
+        <button class="hamburger clickable" aria-label="Toggle Navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Inner Hero Section -->
+  <section class="inner-hero" id="details-hero" style="background-image: url('images/hero/showroom.png');">
+    <div class="inner-hero-content">
+      <h1 class="inner-hero-title" id="page-product-name">Product <span>Details</span></h1>
+      <ul class="breadcrumbs">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Collections</a></li>
+        <li class="active" id="breadcrumbs-active">Details</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Product Details Section -->
+  <section class="details-section">
+    <div class="container" id="product-details-content">
+      <!-- Renders dynamically with script below -->
+      <div class="text-center py-5">
+        <i class="fa-solid fa-spinner fa-spin fa-2x mb-3 text-gold"></i>
+        <p class="text-secondary">Loading product specifications...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Products Section -->
+  <section class="related-section pb-5">
+    <div class="container">
+      <div class="section-subtitle">You May Also Like</div>
+      <h2 class="section-title text-center">Related <span>Products</span></h2>
+      <div class="row g-4" id="related-products-grid">
+        <!-- Renders dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Floating Actions (WhatsApp & Back to Top) -->
+  <div class="floating-actions">
+    <a href="https://wa.me/917780877456?text=Hi%20Eternal%20Home%2C%20I%20am%20interested%20in%20your%20luxury%20products." 
+       target="_blank" class="float-btn whatsapp-float clickable" id="whatsapp-float" title="Contact on WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <button class="float-btn back-to-top clickable" id="back-to-top" title="Back to Top">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-desc-col">
+          <h3>ETERNAL<span>HOME</span></h3>
+          <p class="footer-desc">
+            Eternal Home is Ganderbal's premium luxury showroom. We curate international-standard tiles, designer bathware, modern sanitaryware, and faucets, providing modern architectural styling to elevate your residential and commercial interiors.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="social-link clickable" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-link clickable" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-link clickable" title="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="#" class="social-link clickable" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul class="footer-links">
+            <li><a href="products.html?category=tiles" class="clickable">Premium Floor Tiles</a></li>
+            <li><a href="products.html?category=tiles" class="clickable">Wall & Designer Tiles</a></li>
+            <li><a href="products.html?category=sanitaryware" class="clickable">Luxury Sanitaryware</a></li>
+            <li><a href="products.html?category=faucets" class="clickable">Designer Faucets</a></li>
+            <li><a href="products.html?category=showers" class="clickable">Rain Shower Systems</a></li>
+            <li><a href="products.html?category=kitchen-sinks" class="clickable">Kitchen Sinks</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="about.html" class="clickable">Our Story</a></li>
+            <li><a href="services.html" class="clickable">Showroom Services</a></li>
+            <li><a href="gallery.html" class="clickable">Inspiration Gallery</a></li>
+            <li><a href="brands.html" class="clickable">Partner Brands</a></li>
+            <li><a href="contact.html" class="clickable">Store Location</a></li>
+            <li><a href="wishlist.html" class="clickable">My Wishlist</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Showroom Info</h4>
+          <ul class="footer-contact">
+            <li>
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Qadri Complex, Near PNB,<br>Beehama, Ganderbal, J&K - 191201</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-phone"></i>
+              <span>+91 7780877456</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-envelope"></i>
+              <span>mail.parahtraders@gmail.com</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-clock"></i>
+              <span>Mon - Sat: 9:30 AM - 7:30 PM<br>Sunday: Closed</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 Eternal Home Tiles & Bathware. All Rights Reserved. Designed for Luxury.</p>
+        <ul class="footer-bottom-links">
+          <li><a href="#" class="clickable">Privacy Policy</a></li>
+          <li><a href="#" class="clickable">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- Universal Product Details Modal Popup -->
+  <div id="product-modal" class="modal-overlay">
+    <div class="modal-container glass-panel">
+      <button class="close-modal modal-close-btn clickable"><i class="fa-solid fa-xmark"></i></button>
+      
+      <div class="modal-grid">
+        <!-- Left Column: Gallery Slider/Image -->
+        <div class="modal-gallery-col">
+          <div class="modal-img-container border rounded">
+            <img src="" alt="" class="modal-main-img w-100 h-100" style="object-fit: cover;">
+          </div>
+        </div>
+        
+        <!-- Right Column: Details Info -->
+        <div class="modal-info-col d-flex flex-column">
+          <div class="mb-3">
+            <span class="modal-brand text-gold font-subheading" style="font-size:0.8rem; font-weight:600; letter-spacing:2px; text-transform:uppercase;"></span>
+            <h2 class="modal-title font-heading mt-1" style="font-size:1.8rem; line-height:1.3; font-weight:700;"></h2>
+          </div>
+
+          <div class="d-flex align-items-center gap-3 mb-4">
+            <span class="modal-stock-badge px-3 py-1 rounded" style="font-size:0.75rem; font-weight:600;"></span>
+            <div class="d-flex align-items-center text-gold gap-1" style="font-size:0.85rem;">
+              <i class="fa-solid fa-star"></i>
+              <span class="modal-rating-val text-primary font-weight-600"></span>
+              <span class="modal-reviews text-muted" style="margin-left: 2px;"></span>
+            </div>
+          </div>
+
+          <div class="modal-price-container mb-4">
+            <span class="modal-price font-subheading font-weight-700" style="font-size:1.6rem; color:var(--text-primary);"></span>
+            <span class="modal-price-unit text-secondary" style="font-size:1rem;"></span>
+          </div>
+
+          <p class="modal-desc text-secondary mb-4" style="font-size:0.9rem; line-height:1.6;"></p>
+          
+          <div class="mb-4">
+            <h4 class="font-subheading font-weight-600 mb-2" style="font-size:0.9rem; letter-spacing:1px; text-transform:uppercase;">Key Features</h4>
+            <ul class="modal-features-list list-unstyled" style="padding-left:0;"></ul>
+          </div>
+
+          <div class="mb-4">
+            <h4 class="font-subheading font-weight-600 mb-2" style="font-size:0.9rem; letter-spacing:1px; text-transform:uppercase;">Available Colors</h4>
+            <div class="modal-colors-swatch d-flex align-items-center"></div>
+          </div>
+
+          <div class="mb-4">
+            <h4 class="font-subheading font-weight-600 mb-2" style="font-size:0.9rem; letter-spacing:1px; text-transform:uppercase;">Specifications</h4>
+            <table class="w-100 modal-specs-table-container">
+              <tbody class="modal-specs-table"></tbody>
+            </table>
+          </div>
+
+          <!-- Checkout Controls -->
+          <div class="mt-auto pt-4 border-top d-flex flex-wrap gap-3">
+            <div class="quantity-controller d-inline-flex align-items-center border rounded">
+              <button class="qty-btn modal-qty-dec px-3 py-2"><i class="fa-solid fa-minus"></i></button>
+              <span class="qty-val modal-qty-val px-4 font-weight-600">1</span>
+              <button class="qty-btn modal-qty-inc px-3 py-2"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            
+            <button class="btn btn-primary modal-add-to-cart flex-grow-1">Add To Cart</button>
+            <button class="btn btn-outline modal-add-wishlist clickable" style="width:50px; padding:0; display:flex; align-items:center; justify-content:center;" title="Save Favorite">
+              <i class="fa-regular fa-heart" style="font-size: 1.25rem;"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared Javascript Modules -->
+  <script src="js/products.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/app.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get('id') || 'p1'; // Fallback to p1 if none is passed
+      
+      const allProducts = window.productsDatabase || [];
+      const product = allProducts.find(p => p.id === productId);
+      
+      const container = document.getElementById('product-details-content');
+      
+      if (!product) {
+        container.innerHTML = `
+          <div class="text-center py-5">
+            <i class="fa-solid fa-circle-exclamation fa-3x mb-3 text-muted"></i>
+            <h3 class="font-heading">Product Not Found</h3>
+            <p class="text-secondary mb-4">The selected catalog product does not exist.</p>
+            <a href="products.html" class="btn btn-primary">Back to Catalog</a>
+          </div>
+        `;
+        return;
+      }
+      
+      // Update Title & breadcrumbs
+      document.getElementById('page-product-name').textContent = product.brand;
+      document.getElementById('breadcrumbs-active').textContent = product.name;
+      document.title = `${product.name} | Eternal Home`;
+      
+      // Render details HTML
+      let specsHtml = '';
+      for (const [key, value] of Object.entries(product.specifications)) {
+        specsHtml += `
+          <tr>
+            <td class="font-weight-600 text-gold py-3" style="width: 35%;">${key}</td>
+            <td class="text-secondary py-3">${value}</td>
+          </tr>
+        `;
+      }
+      
+      let featuresHtml = '';
+      product.features.forEach(f => {
+        featuresHtml += `
+          <li class="text-secondary mb-2" style="font-size:0.95rem;">
+            <i class="fa-solid fa-circle-check text-gold mr-2" style="margin-right: 8px;"></i>${f}
+          </li>
+        `;
+      });
+      
+      let swatchesHtml = '';
+      product.colors.forEach((c, idx) => {
+        swatchesHtml += `
+          <label class="color-swatch-item clickable" style="display:inline-flex; align-items:center; gap:8px; margin-right:15px; border:1px solid var(--glass-border); padding:8px 16px; border-radius:4px;">
+            <input type="radio" name="detail-color" value="${c}" ${idx === 0 ? 'checked' : ''} style="accent-color:var(--accent-gold);">
+            <span style="font-size:0.85rem; font-family:var(--font-subheading);">${c}</span>
+          </label>
+        `;
+      });
+
+      const isFav = window.wishlistController ? window.wishlistController.check(product.id) : false;
+      const heartIconClass = isFav ? 'fa-solid fa-heart' : 'fa-regular fa-heart';
+
+      container.innerHTML = `
+        <div class="details-grid">
+          <!-- Left Column -->
+          <div class="detail-gallery reveal reveal-left active">
+            <div class="detail-main-img-wrapper border rounded">
+              <img id="detail-main-view" src="${product.image}" alt="${product.name}" class="w-100 h-100" style="object-fit: cover;">
+            </div>
+            
+            <div class="detail-thumbs">
+              ${(product.gallery || [product.image]).map((img, i) => `
+                <div class="thumb-item ${i === 0 ? 'active' : ''} clickable" data-src="${img}">
+                  <img src="${img}" alt="Thumbnail ${i+1}" class="w-100 h-100" style="object-fit: cover;">
+                </div>
+              `).join('')}
+            </div>
+          </div>
+          
+          <!-- Right Column -->
+          <div class="detail-info reveal reveal-right delay-1 active">
+            <span class="text-gold font-subheading" style="font-size: 0.95rem; font-weight:600; letter-spacing:3px; text-transform:uppercase;">${product.brand}</span>
+            <h2>${product.name}</h2>
+            
+            <div class="d-flex align-items-center gap-3 mb-4 mt-2">
+              <span id="detail-stock-badge" class="px-3 py-1 rounded" style="font-size: 0.75rem; font-weight:600;"></span>
+              <div class="d-flex align-items-center text-gold gap-1" style="font-size: 0.9rem;">
+                <i class="fa-solid fa-star"></i>
+                <span class="text-primary font-weight-600">${product.rating}</span>
+                <span class="text-muted" style="margin-left:2px;">(${product.reviews} reviews)</span>
+              </div>
+            </div>
+            
+            <div class="mb-4">
+              <span class="font-subheading font-weight-700" style="font-size: 1.8rem;">₹${product.price.toLocaleString('en-IN')}</span>
+              <span class="text-secondary" style="font-size: 1.1rem;">/${product.priceUnit}</span>
+            </div>
+            
+            <p class="text-secondary mb-4" style="line-height:1.7; font-size:0.95rem;">${product.description}</p>
+            
+            <div class="mb-4">
+              <h4 class="font-subheading font-weight-600 mb-3" style="font-size:0.95rem; letter-spacing:1px; text-transform:uppercase;">Key Highlights</h4>
+              <ul class="list-unstyled">${featuresHtml}</ul>
+            </div>
+            
+            <div class="mb-4">
+              <h4 class="font-subheading font-weight-600 mb-3" style="font-size:0.95rem; letter-spacing:1px; text-transform:uppercase;">Select Finish / Color</h4>
+              <div class="d-flex align-items-center">${swatchesHtml}</div>
+            </div>
+            
+            <div class="mb-5">
+              <h4 class="font-subheading font-weight-600 mb-3" style="font-size:0.95rem; letter-spacing:1px; text-transform:uppercase;">Technical Specifications</h4>
+              <table class="detail-specs-table">${specsHtml}</table>
+            </div>
+            
+            <!-- Purchase Controls -->
+            <div class="d-flex flex-wrap gap-3 border-top pt-4">
+              <div class="quantity-controller d-inline-flex align-items-center border rounded">
+                <button id="qty-dec" class="qty-btn px-3 py-2"><i class="fa-solid fa-minus"></i></button>
+                <span id="qty-val" class="qty-val px-4 font-weight-600" style="font-size: 1.1rem;">1</span>
+                <button id="qty-inc" class="qty-btn px-3 py-2"><i class="fa-solid fa-plus"></i></button>
+              </div>
+              
+              <button id="btn-add-cart" class="btn btn-primary flex-grow-1">Add To Cart</button>
+              
+              <button id="btn-add-wishlist" class="btn btn-outline clickable" style="width:55px; padding:0; display:flex; align-items:center; justify-content:center;">
+                <i class="${heartIconClass}" style="font-size: 1.3rem;"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      // Stock Status rendering
+      const stockBadge = document.getElementById('detail-stock-badge');
+      if (product.availability === 'in-stock') {
+        stockBadge.textContent = 'In Stock';
+        stockBadge.style.background = 'rgba(34, 197, 94, 0.15)';
+        stockBadge.style.color = '#22c55e';
+      } else if (product.availability === 'made-to-order') {
+        stockBadge.textContent = 'Made to Order';
+        stockBadge.style.background = 'rgba(212, 175, 55, 0.15)';
+        stockBadge.style.color = 'var(--accent-gold)';
+      } else {
+        stockBadge.textContent = 'Out of Stock';
+        stockBadge.style.background = 'rgba(239, 68, 68, 0.15)';
+        stockBadge.style.color = '#ef4444';
+      }
+      
+      // Connect Thumbnail swaps
+      const mainView = document.getElementById('detail-main-view');
+      const thumbs = document.querySelectorAll('.thumb-item');
+      thumbs.forEach(t => {
+        t.addEventListener('click', () => {
+          thumbs.forEach(x => x.classList.remove('active'));
+          t.classList.add('active');
+          mainView.src = t.getAttribute('data-src');
+        });
+      });
+      
+      // Connect local page Quantity controls
+      const qtyDec = document.getElementById('qty-dec');
+      const qtyInc = document.getElementById('qty-inc');
+      const qtyVal = document.getElementById('qty-val');
+      
+      qtyDec.onclick = () => {
+        let q = Number(qtyVal.textContent);
+        if (q > 1) qtyVal.textContent = q - 1;
+      };
+      
+      qtyInc.onclick = () => {
+        let q = Number(qtyVal.textContent);
+        qtyVal.textContent = q + 1;
+      };
+      
+      // Connect Add to Cart
+      document.getElementById('btn-add-cart').onclick = () => {
+        const q = Number(qtyVal.textContent);
+        const colorRadio = document.querySelector('input[name="detail-color"]:checked');
+        const col = colorRadio ? colorRadio.value : product.colors[0];
+        
+        if (window.cartController) {
+          window.cartController.add(product.id, q, col);
+        }
+      };
+      
+      // Connect Add to Wishlist
+      const wishlistBtn = document.getElementById('btn-add-wishlist');
+      wishlistBtn.onclick = () => {
+        if (window.wishlistController) {
+          window.wishlistController.toggle(product.id);
+          const nowFav = window.wishlistController.check(product.id);
+          wishlistBtn.querySelector('i').className = nowFav ? 'fa-solid fa-heart' : 'fa-regular fa-heart';
+        }
+      };
+      
+      // Render Related products
+      const relatedGrid = document.getElementById('related-products-grid');
+      const related = allProducts.filter(p => p.category === product.category && p.id !== product.id).slice(0, 3);
+      
+      if (related.length === 0) {
+        relatedGrid.innerHTML = '<div class="col-12 text-center text-muted">No related products found in this category.</div>';
+        return;
+      }
+      
+      let relatedHtml = '';
+      related.forEach(r => {
+        const heartClass = window.wishlistController && window.wishlistController.check(r.id) ? 'fa-solid fa-heart text-gold' : 'fa-regular fa-heart';
+        relatedHtml += `
+          <div class="col-lg-4 col-md-6 reveal reveal-up active">
+            <div class="product-card glass-panel h-100 d-flex flex-column" style="position:relative;">
+              <button class="wishlist-toggle border-0 shadow-sm rounded-circle d-flex align-items-center justify-content-center" data-id="${r.id}" style="position:absolute; top:15px; right:15px; width:40px; height:40px; background:var(--glass-bg); z-index:10; border:1px solid var(--glass-border) !important;">
+                <i class="${heartClass}" style="font-size: 1.15rem;"></i>
+              </button>
+              <div class="product-img-wrapper img-zoom-container rounded-top" style="height:220px; position:relative; overflow:hidden;">
+                <img src="${r.image}" alt="${r.name}" class="w-100 h-100" style="object-fit: cover;">
+              </div>
+              <div class="product-details-body p-4 d-flex flex-column flex-grow-1">
+                <span class="product-brand text-gold font-subheading mb-1" style="font-size:0.75rem; font-weight:600; letter-spacing:2px; text-transform:uppercase;">${r.brand}</span>
+                <h3 class="product-title font-heading mb-2" style="font-size:1.15rem; font-weight:600; line-height:1.4;"><a href="product-details.html?id=${r.id}">${r.name}</a></h3>
+                <div class="product-meta d-flex justify-content-between align-items-center mb-3">
+                  <span class="product-price font-subheading font-weight-700" style="font-size:1.05rem;">₹${r.price.toLocaleString('en-IN')}</span>
+                  <div class="product-rating text-gold" style="font-size:0.8rem;">
+                    <i class="fa-solid fa-star"></i>
+                    <span class="text-primary font-weight-500" style="margin-left: 2px;">${r.rating}</span>
+                  </div>
+                </div>
+                <div class="mt-auto d-grid gap-2">
+                  <button class="btn btn-primary btn-sm add-cart-quick" data-id="${r.id}">Add To Cart</button>
+                  <a href="product-details.html?id=${r.id}" class="btn btn-outline btn-sm">View Details</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      
+      relatedGrid.innerHTML = relatedHtml;
+      
+      // Connect related products quick adds
+      relatedGrid.querySelectorAll('.add-cart-quick').forEach(b => {
+        b.addEventListener('click', () => {
+          if (window.cartController) window.cartController.add(b.getAttribute('data-id'), 1);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

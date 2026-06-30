@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eternal Home | Premium Tiles & Bathware Showroom</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Eternal Home Tiles & Bathware is Ganderbal's premier destination for high-end luxury floor tiles, wall tiles, sanitaryware, showers, faucets, and wash basins. Discover collections from Kajaria, Jaquar, Somany, Cera, and more.">
+  <meta name="keywords" content="Eternal Home Ganderbal, luxury tiles Kashmir, Kajaria tiles Ganderbal, Jaquar bathroom fittings, Cera Ganderbal, premium bathware Ganderbal, floor tiles, wall tiles, kitchen sinks Ganderbal, sanitaryware, Ganderbal showroom">
+  <meta name="author" content="Eternal Home">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Eternal Home | Premium Tiles & Bathware Ganderbal">
+  <meta property="og:description" content="Explore an international luxury showroom experience in Kashmir. Elevate your spaces with designer tiles and luxury bathware solutions.">
+  <meta property="og:image" content="images/hero/showroom.png">
+  <meta property="og:url" content="index.html">
+  <meta property="og:type" content="website">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Eternal Home | Premium Tiles & Bathware">
+  <meta name="twitter:description" content="Shop luxury floor/wall tiles and modern bathware solutions at Eternal Home, Beehama, Ganderbal.">
+  <meta name="twitter:image" content="images/hero/showroom.png">
+  
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animations.css">
+  
+  <style>
+    /* Hero Landing Custom Elements */
+    .hero-landing {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+    }
+    .hero-parallax-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 120%;
+      background-image: url('images/hero/showroom.png');
+      background-size: cover;
+      background-position: center;
+      z-index: 1;
+      will-change: transform;
+    }
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(8, 12, 20, 0.4) 0%, rgba(8, 12, 20, 0.95) 100%);
+      z-index: 2;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 800px;
+    }
+    .hero-content h1 {
+      font-family: var(--font-heading);
+      font-size: 4.5rem;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .hero-content h1 span {
+      color: var(--accent-gold);
+      font-style: italic;
+    }
+    .hero-content p {
+      font-family: var(--font-subheading);
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 40px;
+    }
+    .hero-btn-group {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .hero-floating-elements {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 3;
+    }
+    .floating-icon-wrapper {
+      position: absolute;
+      color: rgba(212, 175, 55, 0.25);
+      font-size: 2.5rem;
+    }
+    .f-1 { top: 25%; right: 15%; }
+    .f-2 { top: 60%; right: 25%; }
+    .f-3 { top: 40%; left: 10%; }
+    .f-4 { top: 75%; left: 20%; }
+    
+    /* Stats Layout */
+    .about-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      margin-top: 50px;
+    }
+    .stat-card {
+      text-align: center;
+      padding: 30px;
+    }
+    .stat-number {
+      font-family: var(--font-heading);
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin-bottom: 10px;
+    }
+    .stat-label {
+      font-family: var(--font-subheading);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+    
+    /* Brands Slider Section */
+    .brands-slider {
+      padding: 60px 0;
+      background-color: var(--bg-secondary);
+      border-top: 1px solid var(--glass-border);
+      border-bottom: 1px solid var(--glass-border);
+    }
+    .logo-slider-viewport {
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+    }
+    .logo-slide-item {
+      width: 250px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 30px;
+    }
+    
+    /* Services grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+    .service-card {
+      padding: 40px;
+    }
+    .service-icon {
+      font-size: 2.5rem;
+      color: var(--accent-gold);
+      margin-bottom: 25px;
+    }
+    .service-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 25px;
+    }
+    .service-image {
+      height: 200px;
+      overflow: hidden;
+      margin-bottom: 25px;
+    }
+    
+    /* Testimonials Slider Custom */
+    .testimonials-slider-container {
+      max-width: 800px;
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+    }
+    .testimonials-track {
+      display: flex;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .testimonial-slide {
+      flex: 0 0 100%;
+      padding: 40px;
+      text-align: center;
+    }
+    .testimonial-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      border: 2px solid var(--accent-gold);
+      object-fit: cover;
+    }
+    .testimonial-quote {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 1.4rem;
+      line-height: 1.6;
+      margin-bottom: 25px;
+      color: var(--text-primary);
+    }
+    .testimonial-user {
+      font-family: var(--font-subheading);
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+    }
+    .slider-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 30px;
+    }
+    .slider-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--glass-border);
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+    .slider-dot.active {
+      background: var(--accent-gold);
+      width: 25px;
+      border-radius: 5px;
+    }
+    
+    /* General Grid Responsiveness */
+    @media (max-width: 991px) {
+      .hero-content h1 { font-size: 3.2rem; }
+      .about-stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .hero-content h1 { font-size: 2.6rem; }
+      .services-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .about-stats-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Scroll Progress -->
+  <div id="scroll-progress"></div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <!-- Loading Preloader -->
+  <div id="loading-screen">
+    <div class="loader-logo">ETERNAL<span>HOME</span></div>
+    <div class="loader-bar">
+      <div class="loader-progress"></div>
+    </div>
+  </div>
+
+  <!-- Top Navigation Header -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="images/logo/logo.svg" alt="Eternal Home Logo" style="height: 40px; width: 40px; object-fit: contain;">
+        ETERNAL<span>HOME</span>
+      </a>
+      
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link active" id="nav-home">Home</a></li>
+          <li><a href="about.html" class="nav-link" id="nav-about">About</a></li>
+          <li><a href="services.html" class="nav-link" id="nav-services">Services</a></li>
+          <li><a href="products.html" class="nav-link" id="nav-collections">Collections</a></li>
+          <li><a href="gallery.html" class="nav-link" id="nav-gallery">Gallery</a></li>
+          <li><a href="brands.html" class="nav-link" id="nav-brands">Brands</a></li>
+          <li><a href="contact.html" class="nav-link" id="nav-contact">Contact</a></li>
+        </ul>
+      </nav>
+      
+      <div class="nav-icons">
+        <a href="products.html" class="icon-btn clickable" title="Search"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <a href="wishlist.html" class="icon-btn clickable" title="Wishlist">
+          <i class="fa-regular fa-heart"></i>
+          <span class="icon-badge wishlist-badge" style="display: none;">0</span>
+        </a>
+        <a href="cart.html" class="icon-btn clickable" title="Cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="icon-badge cart-badge" style="display: none;">0</span>
+        </a>
+        
+        <button class="theme-toggle-btn icon-btn clickable" title="Toggle Theme">
+          <i class="fa-solid fa-moon"></i>
+          <i class="fa-solid fa-sun"></i>
+        </button>
+        
+        <button class="hamburger clickable" aria-label="Toggle Navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-landing">
+    <div class="hero-parallax-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="container" style="position:relative; z-index:4;">
+      <div class="hero-content">
+        <p class="reveal reveal-up">Luxury Showroom Experience</p>
+        <h1 class="reveal reveal-up delay-1">Build Your Dream Home with <span>Eternal Home</span></h1>
+        <div class="hero-btn-group reveal reveal-up delay-2">
+          <a href="products.html" class="btn btn-primary">Explore Collection</a>
+          <a href="contact.html" class="btn btn-secondary">Visit Showroom</a>
+          <a href="tel:7780877456" class="btn btn-outline"><i class="fa-solid fa-phone"></i> Call Now</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Floating icons -->
+    <div class="hero-floating-elements">
+      <div class="floating-icon-wrapper f-1"><i class="fa-solid fa-gem"></i></div>
+      <div class="floating-icon-wrapper f-2"><i class="fa-solid fa-bath"></i></div>
+      <div class="floating-icon-wrapper f-3"><i class="fa-solid fa-sink"></i></div>
+      <div class="floating-icon-wrapper f-4"><i class="fa-solid fa-faucet-drip"></i></div>
+    </div>
+  </section>
+
+  <!-- About Preview Section -->
+  <section id="about" class="about-preview">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 reveal reveal-left">
+          <div class="img-zoom-container rounded shadow-sm border" style="height: 450px;">
+            <img src="images/gallery/gallery_showroom.svg" alt="Eternal Home Showroom Interior" class="w-100 h-100" style="object-fit: cover;">
+          </div>
+        </div>
+        
+        <div class="col-md-6 reveal reveal-right delay-1" style="padding-left: 50px;">
+          <div class="section-subtitle" style="text-align: left;">Elegant Architecture</div>
+          <h2 class="section-title" style="text-align: left; margin-bottom: 25px;">Curating World Class <span>Spaces</span></h2>
+          <p class="text-secondary mb-4">
+            Located in Beehama, Ganderbal, Eternal Home represents the pinnacle of luxury showroom experiences in Kashmir. We are dedicated to providing the highest quality architectural components—from gorgeous imported marble floor tiles to smart sanitizing bathware closet solutions.
+          </p>
+          <p class="text-secondary mb-5">
+            By partnering with leading national and international sanitary brands like Jaquar, Kajaria, Somany, and Cera, we deliver customized layouts, expert supply consultations, and unparalleled customer service.
+          </p>
+          <a href="about.html" class="btn btn-secondary">Read Our Story</a>
+        </div>
+      </div>
+      
+      <!-- Statistic Counters -->
+      <div class="about-stats-grid reveal reveal-up counter-trigger">
+        <div class="stat-card glass-panel">
+          <div class="stat-number"><span class="counter-val" data-target="10" data-suffix="K+">+</span></div>
+          <div class="stat-label">Happy Customers</div>
+        </div>
+        <div class="stat-card glass-panel">
+          <div class="stat-number"><span class="counter-val" data-target="5000" data-suffix="+">+</span></div>
+          <div class="stat-label">Products</div>
+        </div>
+        <div class="stat-card glass-panel">
+          <div class="stat-number"><span class="counter-val" data-target="70" data-suffix="+">+</span></div>
+          <div class="stat-label">Brands Partnered</div>
+        </div>
+        <div class="stat-card glass-panel">
+          <div class="stat-number"><span class="counter-val" data-target="10" data-suffix="+">+</span></div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Preview Section -->
+  <section id="services" class="services-preview" style="background-color: rgba(var(--accent-blue-rgb), 0.02);">
+    <div class="container">
+      <div class="section-subtitle">Exquisite Solutions</div>
+      <h2 class="section-title">What We <span>Deliver</span></h2>
+      
+      <div class="services-grid">
+        <!-- Service 1 -->
+        <div class="service-card glass-panel reveal reveal-up">
+          <div class="service-icon"><i class="fa-solid fa-border-all"></i></div>
+          <div class="service-image img-zoom-container rounded">
+            <img src="images/gallery/gallery_tiles.svg" alt="Premium Floor Tiles">
+          </div>
+          <h3>Premium Tiles</h3>
+          <p>Explore an elite range of vitrified, glazed, and ceramic tiles for floor, wall, bathroom, and kitchen applications.</p>
+          <a href="products.html?category=tiles" class="text-gold font-weight-600 clickable">Learn More <i class="fa-solid fa-arrow-right ml-1"></i></a>
+        </div>
+        
+        <!-- Service 2 -->
+        <div class="service-card glass-panel reveal reveal-up delay-1">
+          <div class="service-icon"><i class="fa-solid fa-bath"></i></div>
+          <div class="service-image img-zoom-container rounded">
+            <img src="images/gallery/gallery_bathrooms.svg" alt="Luxury Sanitaryware">
+          </div>
+          <h3>Sanitaryware & Bathware</h3>
+          <p>Reimagine bathroom comfort with automated closets, customized showers, design faucets, and basins.</p>
+          <a href="products.html?category=sanitaryware" class="text-gold font-weight-600 clickable">Learn More <i class="fa-solid fa-arrow-right ml-1"></i></a>
+        </div>
+        
+        <!-- Service 3 -->
+        <div class="service-card glass-panel reveal reveal-up delay-2">
+          <div class="service-icon"><i class="fa-solid fa-handshake"></i></div>
+          <div class="service-image img-zoom-container rounded">
+            <img src="images/gallery/gallery_interiors.svg" alt="Interior Consultation">
+          </div>
+          <h3>Supply & Consultation</h3>
+          <p>Get expert suggestions for commercial developments and bulk orders, backed by fast delivery services.</p>
+          <a href="services.html" class="text-gold font-weight-600 clickable">Learn More <i class="fa-solid fa-arrow-right ml-1"></i></a>
+        </div>
+      </div>
+      
+      <div class="text-center mt-5" style="margin-top: 50px;">
+        <a href="services.html" class="btn btn-secondary">View All Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brands Slider Section -->
+  <section class="brands-slider">
+    <div class="container">
+      <div class="logo-slider-viewport">
+        <div class="logo-track">
+          <!-- Slide items (repeated to create continuous loops) -->
+          <div class="logo-slide-item"><img src="images/brands/logo_kajaria.svg" alt="Kajaria Logo" style="height: 60px;"></div>
+          <div class="logo-slide-item"><img src="images/brands/logo_jaquar.svg" alt="Jaquar Logo" style="height: 60px;"></div>
+          <div class="logo-slide-item"><img src="images/brands/logo_duragres.svg" alt="Duragres Logo" style="height: 60px;"></div>
+          <div class="logo-slide-item"><img src="images/brands/logo_somany.svg" alt="Somany Logo" style="height: 60px;"></div>
+          <div class="logo-slide-item"><img src="images/brands/logo_cera.svg" alt="Cera Logo" style="height: 60px;"></div>
+          <div class="logo-slide-item"><img src="images/brands/logo_parryware.svg" alt="Parryware Logo" style="height: 60px;"></div>
+          <div class="logo-slide-item"><img src="images/brands/logo_hindware.svg" alt="Hindware Logo" style="height: 60px;"></div>
+          <div class="logo-slide-item"><img src="images/brands/logo_johnson.svg" alt="Johnson Logo" style="height: 60px;"></div>
+          <div class="logo-slide-item"><img src="images/brands/logo_orientbell.svg" alt="Orientbell Logo" style="height: 60px;"></div>
+          <div class="logo-slide-item"><img src="images/brands/logo_asian_granito.svg" alt="Asian Granito Logo" style="height: 60px;"></div>
+          
+          <!-- Duplicate items for looping -->
+          <div class="logo-slide-item"><img src="images/brands/logo_kajaria.svg" alt="Kajaria Logo" style="height: 60px;"></div>
+          <div class="logo-slide-item"><img src="images/brands/logo_jaquar.svg" alt="Jaquar Logo" style="height: 60px;"></div>
+          <div class="logo-slide-item"><img src="images/brands/logo_duragres.svg" alt="Duragres Logo" style="height: 60px;"></div>
+          <div class="logo-slide-item"><img src="images/brands/logo_somany.svg" alt="Somany Logo" style="height: 60px;"></div>
+          <div class="logo-slide-item"><img src="images/brands/logo_cera.svg" alt="Cera Logo" style="height: 60px;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="section-subtitle">Client Reviews</div>
+      <h2 class="section-title">Showroom <span>Testimonials</span></h2>
+      
+      <div class="testimonials-slider-container glass-panel reveal reveal-up">
+        <div class="testimonials-track">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-slide">
+            <img src="images/logo/logo.svg" alt="Client 1" class="testimonial-img">
+            <p class="testimonial-quote">
+              "We purchased all our living room vitrified tiles and kitchen sinks from Eternal Home Ganderbal. Their staff offered amazing design advice and the price was highly competitive. Highly recommended luxury showroom."
+            </p>
+            <div class="testimonial-user">Adil Ahmad</div>
+            <div class="text-gold" style="font-size:0.75rem; margin-top: 5px;">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+          </div>
+          
+          <!-- Testimonial 2 -->
+          <div class="testimonial-slide">
+            <img src="images/logo/logo.svg" alt="Client 2" class="testimonial-img">
+            <p class="testimonial-quote">
+              "The automatic sensor closet from Cera and the gold rain showers from Jaquar are incredible additions to our new home. Their customer guidance was truly premium and the delivery to Ganderbal was fast."
+            </p>
+            <div class="testimonial-user">Mehraan Shah</div>
+            <div class="text-gold" style="font-size:0.75rem; margin-top: 5px;">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+          </div>
+          
+          <!-- Testimonial 3 -->
+          <div class="testimonial-slide">
+            <img src="images/logo/logo.svg" alt="Client 3" class="testimonial-img">
+            <p class="testimonial-quote">
+              "Beautiful showroom in Beehama! They have an extensive range of Kajaria tiles and modern designer wash basins. The interior alignment suggestions helped us design our master bathroom perfectly."
+            </p>
+            <div class="testimonial-user">Zahoor Malik</div>
+            <div class="text-gold" style="font-size:0.75rem; margin-top: 5px;">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+          </div>
+        </div>
+        
+        <div class="slider-dots">
+          <div class="slider-dot active"></div>
+          <div class="slider-dot"></div>
+          <div class="slider-dot"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Accordion Section -->
+  <section class="faq-section" style="background-color: rgba(var(--accent-blue-rgb), 0.01);">
+    <div class="container" style="max-width: 800px;">
+      <div class="section-subtitle">FAQ</div>
+      <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+      
+      <div class="accordion-list reveal reveal-up">
+        <!-- FAQ 1 -->
+        <div class="accordion-item active">
+          <div class="accordion-header">
+            <h3>Do you provide delivery throughout Ganderbal & Srinagar?</h3>
+            <div class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </div>
+          <div class="accordion-content" style="max-height: 200px;">
+            <p>Yes, we offer fast and reliable delivery options across Ganderbal, Srinagar, and neighboring locations in Kashmir. Heavy loads of floor/wall tiles are shipped carefully to avoid transit breakage.</p>
+          </div>
+        </div>
+        
+        <!-- FAQ 2 -->
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <h3>Which brands of tiles and bathware do you sell?</h3>
+            <div class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </div>
+          <div class="accordion-content">
+            <p>We are authorized showroom dealers for leading luxury brands, including Kajaria, Jaquar, Duragres, Somany, Cera, Johnson, Hindware, Parryware, and Orientbell.</p>
+          </div>
+        </div>
+        
+        <!-- FAQ 3 -->
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <h3>Do you offer customization or design assistance?</h3>
+            <div class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </div>
+          <div class="accordion-content">
+            <p>Absolutely! We provide layout suggestions, size recommendations, color coordinating advice, and full architectural interior alignments to match your bathroom or living room layout specifications.</p>
+          </div>
+        </div>
+        
+        <!-- FAQ 4 -->
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <h3>Can I place bulk orders for hotels or residences?</h3>
+            <div class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></div>
+          </div>
+          <div class="accordion-content">
+            <p>Yes, we cater to bulk supply inquiries for hotels, commercial towers, government complexes, and custom residential blocks. Contact our Ganderbal store manager at +91 7780877456 for corporate discount rates.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="section-subtitle">Store Details</div>
+      <h2 class="section-title">Get In <span>Touch</span></h2>
+      
+      <div class="row">
+        <!-- Contact details -->
+        <div class="col-md-6 reveal reveal-left">
+          <div class="glass-panel p-5 h-100 d-flex flex-column justify-content-between" style="padding: 40px;">
+            <div>
+              <h3 class="font-heading mb-4" style="font-size: 1.8rem;">Eternal Home Showroom</h3>
+              <p class="text-secondary mb-4">We would love to show you our luxury collections in person. Visit our premium showroom or call us directly for stock status and prices.</p>
+              
+              <ul class="list-unstyled mb-5" style="display:flex; flex-direction:column; gap:20px;">
+                <li class="d-flex align-items-center gap-3">
+                  <i class="fa-solid fa-location-dot text-gold" style="font-size:1.2rem; width:25px;"></i>
+                  <span>Qadri Complex, Near PNB, Beehama, Ganderbal, J&K</span>
+                </li>
+                <li class="d-flex align-items-center gap-3">
+                  <i class="fa-solid fa-phone text-gold" style="font-size:1.2rem; width:25px;"></i>
+                  <span>+91 7780877456</span>
+                </li>
+                <li class="d-flex align-items-center gap-3">
+                  <i class="fa-solid fa-envelope text-gold" style="font-size:1.2rem; width:25px;"></i>
+                  <span>mail.parahtraders@gmail.com</span>
+                </li>
+              </ul>
+            </div>
+            
+            <!-- Map Placeholder -->
+            <div class="map-container border rounded" style="height: 180px; background:var(--bg-tertiary); overflow:hidden; position:relative;">
+              <div class="w-100 h-100 d-flex align-items-center justify-content-center flex-column text-center text-muted" style="padding: 20px;">
+                <i class="fa-solid fa-map-location-dot fa-2x mb-2 text-gold"></i>
+                <h4 class="font-subheading text-primary font-weight-600 mb-1" style="font-size:0.9rem;">Beehama Showroom Map</h4>
+                <p style="font-size:0.75rem;">Qadri Complex, Ganderbal (Near Punjab National Bank)</p>
+                <a href="https://maps.google.com" target="_blank" class="text-gold font-weight-600 mt-2 clickable" style="font-size:0.75rem;">Open Google Maps <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Contact Form -->
+        <div class="col-md-6 reveal reveal-right delay-1">
+          <form id="contact-form" class="glass-panel p-5 h-100" style="padding: 40px;">
+            <h3 class="font-heading mb-4" style="font-size:1.8rem;">Send An Inquiry</h3>
+            <p class="text-secondary mb-4">Have specific dimensional requirements or brand options? Ask us directly.</p>
+            
+            <div class="form-group">
+              <label for="form-name">Full Name</label>
+              <input type="text" id="form-name" class="form-control" placeholder="Your full name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="form-phone">Mobile Number</label>
+              <input type="tel" id="form-phone" class="form-control" placeholder="10-digit mobile number" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="form-email">Email Address</label>
+              <input type="email" id="form-email" class="form-control" placeholder="Your email address" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="form-message">Requirement Message</label>
+              <textarea id="form-message" class="form-control" rows="4" placeholder="Mention product type, brands, quantity, or sizes..." required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary w-100 mt-3">Submit Inquiry</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Floating Actions (WhatsApp & Back to Top) -->
+  <div class="floating-actions">
+    <a href="https://wa.me/917780877456?text=Hi%20Eternal%20Home%2C%20I%20am%20interested%20in%20your%20luxury%20products." 
+       target="_blank" class="float-btn whatsapp-float clickable" id="whatsapp-float" title="Contact on WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <button class="float-btn back-to-top clickable" id="back-to-top" title="Back to Top">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-desc-col">
+          <h3>ETERNAL<span>HOME</span></h3>
+          <p class="footer-desc">
+            Eternal Home is Ganderbal's premium luxury showroom. We curate international-standard tiles, designer bathware, modern sanitaryware, and faucets, providing modern architectural styling to elevate your residential and commercial interiors.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="social-link clickable" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-link clickable" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-link clickable" title="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="#" class="social-link clickable" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul class="footer-links">
+            <li><a href="products.html?category=tiles" class="clickable">Premium Floor Tiles</a></li>
+            <li><a href="products.html?category=tiles" class="clickable">Wall & Designer Tiles</a></li>
+            <li><a href="products.html?category=sanitaryware" class="clickable">Luxury Sanitaryware</a></li>
+            <li><a href="products.html?category=faucets" class="clickable">Designer Faucets</a></li>
+            <li><a href="products.html?category=showers" class="clickable">Rain Shower Systems</a></li>
+            <li><a href="products.html?category=kitchen-sinks" class="clickable">Kitchen Sinks</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="about.html" class="clickable">Our Story</a></li>
+            <li><a href="services.html" class="clickable">Showroom Services</a></li>
+            <li><a href="gallery.html" class="clickable">Inspiration Gallery</a></li>
+            <li><a href="brands.html" class="clickable">Partner Brands</a></li>
+            <li><a href="contact.html" class="clickable">Store Location</a></li>
+            <li><a href="wishlist.html" class="clickable">My Wishlist</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Showroom Info</h4>
+          <ul class="footer-contact">
+            <li>
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Qadri Complex, Near PNB,<br>Beehama, Ganderbal, J&K - 191201</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-phone"></i>
+              <span>+91 7780877456</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-envelope"></i>
+              <span>mail.parahtraders@gmail.com</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-clock"></i>
+              <span>Mon - Sat: 9:30 AM - 7:30 PM<br>Sunday: Closed</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 Eternal Home Tiles & Bathware. All Rights Reserved. Designed for Luxury.</p>
+        <ul class="footer-bottom-links">
+          <li><a href="#" class="clickable">Privacy Policy</a></li>
+          <li><a href="#" class="clickable">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- Universal Product Details Modal Popup -->
+  <div id="product-modal" class="modal-overlay">
+    <div class="modal-container glass-panel">
+      <button class="close-modal modal-close-btn clickable"><i class="fa-solid fa-xmark"></i></button>
+      
+      <div class="modal-grid">
+        <!-- Left Column: Gallery Slider/Image -->
+        <div class="modal-gallery-col">
+          <div class="modal-img-container border rounded">
+            <img src="" alt="" class="modal-main-img w-100 h-100" style="object-fit: cover;">
+          </div>
+        </div>
+        
+        <!-- Right Column: Details Info -->
+        <div class="modal-info-col d-flex flex-column">
+          <div class="mb-3">
+            <span class="modal-brand text-gold font-subheading" style="font-size:0.8rem; font-weight:600; letter-spacing:2px; text-transform:uppercase;"></span>
+            <h2 class="modal-title font-heading mt-1" style="font-size:1.8rem; line-height:1.3; font-weight:700;"></h2>
+          </div>
+
+          <div class="d-flex align-items-center gap-3 mb-4">
+            <span class="modal-stock-badge px-3 py-1 rounded" style="font-size:0.75rem; font-weight:600;"></span>
+            <div class="d-flex align-items-center text-gold gap-1" style="font-size:0.85rem;">
+              <i class="fa-solid fa-star"></i>
+              <span class="modal-rating-val text-primary font-weight-600"></span>
+              <span class="modal-reviews text-muted" style="margin-left: 2px;"></span>
+            </div>
+          </div>
+
+          <div class="modal-price-container mb-4">
+            <span class="modal-price font-subheading font-weight-700" style="font-size:1.6rem; color:var(--text-primary);"></span>
+            <span class="modal-price-unit text-secondary" style="font-size:1rem;"></span>
+          </div>
+
+          <p class="modal-desc text-secondary mb-4" style="font-size:0.9rem; line-height:1.6;"></p>
+          
+          <div class="mb-4">
+            <h4 class="font-subheading font-weight-600 mb-2" style="font-size:0.9rem; letter-spacing:1px; text-transform:uppercase;">Key Features</h4>
+            <ul class="modal-features-list list-unstyled" style="padding-left:0;"></ul>
+          </div>
+
+          <div class="mb-4">
+            <h4 class="font-subheading font-weight-600 mb-2" style="font-size:0.9rem; letter-spacing:1px; text-transform:uppercase;">Available Colors</h4>
+            <div class="modal-colors-swatch d-flex align-items-center"></div>
+          </div>
+
+          <div class="mb-4">
+            <h4 class="font-subheading font-weight-600 mb-2" style="font-size:0.9rem; letter-spacing:1px; text-transform:uppercase;">Specifications</h4>
+            <table class="w-100 modal-specs-table-container">
+              <tbody class="modal-specs-table"></tbody>
+            </table>
+          </div>
+
+          <!-- Checkout Controls -->
+          <div class="mt-auto pt-4 border-top d-flex flex-wrap gap-3">
+            <div class="quantity-controller d-inline-flex align-items-center border rounded">
+              <button class="qty-btn modal-qty-dec px-3 py-2"><i class="fa-solid fa-minus"></i></button>
+              <span class="qty-val modal-qty-val px-4 font-weight-600">1</span>
+              <button class="qty-btn modal-qty-inc px-3 py-2"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            
+            <button class="btn btn-primary modal-add-to-cart flex-grow-1">Add To Cart</button>
+            <button class="btn btn-outline modal-add-wishlist clickable" style="width:50px; padding:0; display:flex; align-items:center; justify-content:center;" title="Save Favorite">
+              <i class="fa-regular fa-heart" style="font-size: 1.25rem;"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared Javascript Modules -->
+  <script src="js/products.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
